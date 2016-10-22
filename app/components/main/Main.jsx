@@ -7,7 +7,6 @@ class Main extends React.Component {
       <div className="main">
         <Unit name="test"/>
       </div>
-
     );
   }
 }
