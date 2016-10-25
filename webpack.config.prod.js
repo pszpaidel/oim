@@ -2,9 +2,9 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './app/index.jsx',
+  entry: './lib',
   output: {
-    path: './dist/js/',
+    path: 'dist',
     filename: 'bundle.js'
   },
   resolve: {
@@ -20,17 +20,11 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
-        screw_ie8: true
-      }
-    })
   ],
   module: {
     loaders: [
       {
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
           presets: ['react', 'es2015', 'stage-0']
@@ -39,7 +33,7 @@ module.exports = {
       {
         test: /\.less/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader")
+        loader: ExtractTextPlugin.extract(["css", "postcss", "less"])
       },
     ]
   },

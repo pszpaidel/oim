@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './app/index.jsx',
+  entry: './lib/index.jsx',
   output: {
-    path: './dist/js/',
+    path: './dist',
     filename: 'bundle.js'
   },
   resolve: {
