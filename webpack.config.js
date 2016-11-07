@@ -1,7 +1,9 @@
 const webpack = require('webpack');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './lib/index.jsx',
+  entry: './lib',
   output: {
     path: './dist',
     filename: 'bundle.js'
@@ -9,17 +11,27 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devtool: 'inline-source-map',
-  plugins: [],
+  devtool: '',
+  plugins: [
+    new ExtractTextPlugin("bundle.css"),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new LiveReloadPlugin({appendScriptTag : true})
+  ],
   module: {
     loaders: [
       {
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/,
         query: {
-          presets: ['react', 'es2015', 'stage-0']
+          presets: ['react', 'es2015']
         }
-      }
+      },
+      {
+        test: /\.less/,
+        exclude: /node_modules/,
+        loader: ExtractTextPlugin.extract(["css", "postcss", "less"])
+      },
     ]
   }
 };

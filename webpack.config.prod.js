@@ -10,7 +10,7 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devtool: null,
+  devtool: 'eval',
   plugins: [
     new ExtractTextPlugin("bundle.css"),
     new webpack.DefinePlugin({
@@ -24,10 +24,10 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/,
         query: {
-          presets: ['react', 'es2015', 'stage-0']
+          presets: ['react', 'es2015']
         }
       },
       {
