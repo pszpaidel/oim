@@ -11,17 +11,18 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devtool: '',
   plugins: [
     new ExtractTextPlugin("bundle.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new LiveReloadPlugin({appendScriptTag : true})
+    new LiveReloadPlugin({appendScriptTag : true}),
+
   ],
   module: {
     loaders: [
       {
         loader: 'babel',
+        test: /\.js*/,
         exclude: /node_modules/,
         query: {
           presets: ['react', 'es2015']
@@ -30,7 +31,7 @@ module.exports = {
       {
         test: /\.less/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract(["css", "postcss", "less"])
+        loader: ExtractTextPlugin.extract(["css", "less"])
       },
     ]
   }

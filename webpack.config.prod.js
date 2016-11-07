@@ -20,11 +20,17 @@ module.exports = {
     }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
   ],
   module: {
     loaders: [
       {
         loader: 'babel',
+        test: /\.js*/,
         exclude: /node_modules/,
         query: {
           presets: ['react', 'es2015']
