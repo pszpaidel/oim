@@ -13,4 +13,8 @@ Unit.propTypes = {
   name: React.PropTypes.string
 }
 
+Unit.defaultProps = {
+  name: ''
+}
+
 export default Unit;

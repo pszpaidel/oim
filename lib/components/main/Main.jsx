@@ -4,10 +4,6 @@ import Unit from '../unit/Unit';
 class Main extends React.Component {
 
   componentDidMount() {
-    //if (process.env.NODE_ENV != "production")
-    //{
-    //  document.write('<script src="http://localhost:35729/livereload.js"></script>')
-    //}
   }
 
   render() {

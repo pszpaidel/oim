@@ -11,7 +11,6 @@ npm install -g webpack-bundle-size-analyzer
 webpack --json | webpack-bundle-size-analyzer
 
 #config-validator
-
 -install
 npm install -g webpack-validator
 

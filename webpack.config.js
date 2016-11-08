@@ -15,8 +15,7 @@ module.exports = {
     new ExtractTextPlugin("bundle.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new LiveReloadPlugin({appendScriptTag : true}),
-
+    new LiveReloadPlugin({appendScriptTag : true})
   ],
   module: {
     loaders: [
