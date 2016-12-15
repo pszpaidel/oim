@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Webpack application</title>
+
+    <style>
+        #breadcrumbs-one{
+            overflow: hidden;
+            width: 100%;
+        }
+
+        #breadcrumbs-one li{
+            float: left;
+            margin: 0 0 0 1em;
+        }
+
+        #breadcrumbs-one div{
+            padding: .7em 1em .7em 2em;
+            float: left;
+            color: #444;
+            position: relative;
+            background-color: #ff0000;
+        }
+
+        #breadcrumbs-one li:first-child a{
+            padding-left: 1em;
+        }
+
+        #breadcrumbs-one div::after,
+        #breadcrumbs-one div::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            margin-top: -1.5em;
+            border-top: 1.5em solid transparent;
+            border-bottom: 1.5em solid transparent;
+            border-left: 1em solid;
+            right: -1em;
+        }
+
+        #breadcrumbs-one li:last-child div:after {
+            background-color: #ff0000;
+            right: 0;
+        }
+
+        #breadcrumbs-one div::after {
+            z-index: 2;
+            border-left-color: #ff0000;
+        }
+
+        #breadcrumbs-one div::before{
+            border-left-color: #ffffff;
+            right: -2em;
+            z-index: 1;
+        }
+
+    </style>
 </head>
+
 <body>
 <div id="app"/>
 <script type="text/javascript" src="dist/bundle.js"></script>
+
+<ul id="breadcrumbs-one">
+    <li><div>Lorem ipsum</div></li>
+    <li><div>Vivamus nisi eros</div></li>
+    <li><div>Nulla sed lorem risus</div></li>
+    <li><div>Nam iaculis commodo</div></li>
+    <li><div>Current crumb</div></li>
+</ul>
+
 </body>
 </html>

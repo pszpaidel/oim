@@ -8,7 +8,8 @@
     "prod": "npm run clean-dist && webpack --config=webpack.config.prod.js",
     "clean-dist": "rimraf ./dist/*",
     "lint": "eslint ./lib/index.jsx --fix",
-    "validate-webpack-prod": "webpack-validator webpack.config.prod.js"
+    "validate-webpack-prod": "webpack-validator webpack.config.prod.js",
+    "test": "mocha --recursive --watch ./tests/* "
   },
   "devDependencies": {
     "babel-core": "^6.17.0",
