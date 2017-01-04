@@ -1,13 +1,7 @@
-// @flow
-
 import React from 'react';
 import Unit from '../unit/Unit';
 
 class Main extends React.Component {
-
-  componentDidMount() {
-  }
-
   render() {
     return (
       <div className="main">

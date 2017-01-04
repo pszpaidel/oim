@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 
 class Unit extends React.Component {
