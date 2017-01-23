@@ -1,37 +1,49 @@
 const webpack = require('webpack');
-const LiveReloadPlugin = require('webpack-livereload-plugin');
+const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
+
+const srcPath = path.join(__dirname, './lib');
+const entryJS = path.join(__dirname, './lib/index.js');
 
 module.exports = {
-  entry: './lib',
-  output: {
-    path: './dist',
-    filename: 'bundle.js'
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  plugins: [
-    new ExtractTextPlugin("bundle.css"),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new LiveReloadPlugin({appendScriptTag : true})
-  ],
-  module: {
-    loaders: [
-      {
-        loader: 'babel',
-        test: /\.js*/,
-        exclude: /node_modules/,
-        query: {
-          presets: ['react', 'es2015']
-        }
-      },
-      {
-        test: /\.less/,
-        exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract(["css", "less"])
-      },
-    ]
-  }
+    entry: [entryJS],
+    output: {
+        path: 'dist',
+        filename: 'bundle.min.js'
+    },
+    resolve: {
+        extensions: ['', '.js', '.jsx']
+    },
+    plugins: [
+        new ExtractTextPlugin("bundle.css"),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new LiveReloadPlugin({appendScriptTag : true})
+    ],
+    module: {
+        loaders: [
+            {
+                loader: 'babel',
+                test: /\.(js|jsx)$/,
+                include: [srcPath],
+                query: {
+                    presets: ['react', 'es2015']
+                }
+            },
+            {
+                loader: 'eslint',
+                test: /\.(js|jsx)$/,
+                include: [srcPath],
+                options: {
+                    fix: true,
+                }
+            },
+            {
+                loader: ExtractTextPlugin.extract(["css", "less"]),
+                test: /\.less$/,
+                include: [srcPath],
+            },
+        ]
+    },
 };
