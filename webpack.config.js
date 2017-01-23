@@ -4,13 +4,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 const srcPath = path.join(__dirname, './lib');
-const entryJS = path.join(__dirname, './lib/index.jsx');
+const entryJS = path.join(__dirname, './lib/index');
 
 module.exports = {
   entry: [entryJS],
   output: {
     path: 'dist',
-    filename: 'bundle.min.js'
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
