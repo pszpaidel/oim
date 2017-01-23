@@ -6,7 +6,7 @@ class Main extends React.Component {
     return (
       <div className="main">
         <button>Button OK</button>
-        <Unit name="Live reloading works fine!!!"/>
+        <Unit name="Live reloading works fine!!!" />
       </div>
     );
   }

@@ -3,7 +3,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const srcPath = path.join(__dirname, './lib');
-const entryJS = path.join(__dirname, './lib/index.js');
+const entryJS = path.join(__dirname, './lib/index.jsx');
 
 module.exports = {
     entry: [entryJS],

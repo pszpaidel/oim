@@ -2,5 +2,7 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "rules": {
+    "react/prefer-stateless-function": 1,
+    "object-curly-spacing": 1
   }
 }
