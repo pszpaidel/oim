@@ -32,14 +32,6 @@ module.exports = {
         }
       },
       {
-        loader: 'eslint',
-        test: /\.(js|jsx)$/,
-        include: [srcPath],
-        options: {
-          fix: true,
-        }
-      },
-      {
         loader: ExtractTextPlugin.extract(["css", "less"]),
         test: /\.less$/,
         include: [srcPath],
