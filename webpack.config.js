@@ -28,7 +28,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: [srcPath],
         query: {
-          presets: ['react', 'es2015']
+          presets: ['es2015', 'react']
         }
       },
       {
