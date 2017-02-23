@@ -24,11 +24,19 @@ module.exports = {
   module: {
     loaders: [
       {
-        loader: 'babel',
+        loader: 'babel-loader',
         test: /\.(js|jsx)$/,
         include: [srcPath],
         query: {
           presets: ['react', 'es2015']
+        }
+      },
+      {
+        loader: 'eslint-loader',
+        test: /\.(js|jsx)$/,
+        include: [srcPath],
+        query: {
+          fix: true
         }
       },
       {

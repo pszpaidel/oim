@@ -1,15 +1,10 @@
 import React from 'react';
-import Unit from '../unit/Unit';
+import testMethod from '../../utils/utils';
 
-class Main extends React.Component {
-  render() {
-    return (
-      <div className="main">
-        <button>Button OK</button>
-        <Unit name="Live reloading works fine!!!" />
-      </div>
-    );
-  }
-}
+const main = () => (
+  <div className="main">
+    <button>{testMethod(1, 2)}</button>
+  </div>
+  );
 
-export default Main;
+export default main;
