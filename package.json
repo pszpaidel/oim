@@ -36,7 +36,6 @@
     "less-loader": "^2.2.3",
     "mockery": "^2.0.0",
     "postcss-loader": "^1.0.0",
-    "react-addons-perf": "^15.4.2",
     "rimraf": "^2.5.4",
     "sinon": "^1.17.7",
     "webpack": "^1.13.3",
@@ -45,6 +44,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "d3": "^4.2.8",
+    "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-addons-perf": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
