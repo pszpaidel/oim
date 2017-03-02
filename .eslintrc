@@ -5,7 +5,7 @@
     "flowtype"
   ],
   "rules": {
-    "no-console": 1,
+    "no-console": 0,
     "react/prefer-stateless-function": 1,
     "flowtype/boolean-style": [2, "boolean"],
     "flowtype/define-flow-type": 2,

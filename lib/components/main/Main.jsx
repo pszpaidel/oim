@@ -1,5 +1,4 @@
 import React from 'react';
-import testMethod from '../../utils/utils';
 import database from '../../database/database';
 
 class Main extends React.Component {
@@ -14,7 +13,12 @@ class Main extends React.Component {
   render() {
     return (
       <div className="main">
-        <button>{testMethod(1, 2)}</button>
+        <div>
+          <div>sadsads</div>
+          <div>sadsads</div>
+          <div>sadsads</div>
+          <div>sadsads</div>
+        </div>
       </div>
     );
   }

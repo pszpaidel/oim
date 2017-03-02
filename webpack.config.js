@@ -24,7 +24,6 @@ module.exports = {
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin(),
     new LiveReloadPlugin({appendScriptTag: true}),
-    new CircularDependencies({failOnError: true})
   ],
   module: {
     loaders: [
