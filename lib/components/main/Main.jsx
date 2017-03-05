@@ -1,27 +1,27 @@
 import React from 'react';
-import database from '../../database/database';
+import LeftNavigatorContainer from '../leftNavigator/container/LeftNavigatorContainer';
+import Recipe from '../recipe/component/Recipe';
 
 class Main extends React.Component {
 
   componentDidMount() {
-    database.ref('/').once('value', (snap) => {
-      const recipe = snap.val();
-      console.log(recipe);
-    });
+    this.props.fetchCookbook();
   }
 
   render() {
     return (
-      <div className="main">
-        <div>
-          <div>sadsads</div>
-          <div>sadsads</div>
-          <div>sadsads</div>
-          <div>sadsads</div>
-        </div>
+      <div>
+        <LeftNavigatorContainer items={this.props.category} />
+        <Recipe value={this.props.recipe} />
       </div>
     );
   }
 }
+
+Main.propTypes = {
+  fetchCookbook: React.PropTypes.func.isRequired,
+  category: React.PropTypes.array.isRequired,
+  recipe: React.PropTypes.object.isRequired,
+};
 
 export default Main;
