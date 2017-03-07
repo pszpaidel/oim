@@ -10,7 +10,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="main">
         <LeftNavigatorContainer items={this.props.category} />
         <Recipe value={this.props.recipe} />
       </div>
