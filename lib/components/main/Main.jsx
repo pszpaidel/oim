@@ -18,6 +18,12 @@ class Main extends React.Component {
   }
 }
 
+Main.defaultProps = {
+  category: [],
+  recipe: {},
+};
+
+
 Main.propTypes = {
   fetchCookbook: React.PropTypes.func.isRequired,
   category: React.PropTypes.array.isRequired,

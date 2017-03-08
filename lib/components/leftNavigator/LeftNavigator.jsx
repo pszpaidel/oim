@@ -3,10 +3,15 @@ import LeftNavigatorRenderer from './LeftNavigatorRenderer';
 
 class LeftNavigator extends React.Component {
   render() {
-    const list = this.props.items.map((v, index) => <LeftNavigatorRenderer key={index} data={v} />);
+    const list = this.props.items.map((value, index) =>
+      <LeftNavigatorRenderer
+        onClick={this.props.onClick}
+        key={index}
+        data={value}
+      />);
 
     return (
-      <div className="left-navigator" >
+      <div className="left-navigator">
         {list}
       </div>
     );
@@ -15,6 +20,7 @@ class LeftNavigator extends React.Component {
 
 LeftNavigator.propTypes = {
   items: React.PropTypes.array.isRequired,
+  onClick: React.PropTypes.func.isRequired,
 };
 
 export default LeftNavigator;
