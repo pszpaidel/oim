@@ -1,6 +1,5 @@
-const sinon = require("sinon");
-const mockery = require("mockery");
-const chai = require("chai");
+//const sinon = require("sinon");
+//const chai = require("chai");
 
 var assert = require('assert');
 
@@ -24,13 +23,9 @@ describe('Array', function() {
 
   describe('#indexOf()', function() {
 
-    let spy = sinon.spy();
-    spy();
     it('should return -1 when the value is not present', function() {
       assert.equal(-1, [1,2,3].indexOf(4));
     });
-
-    console.log(spy.called);
   });
 
   describe('#length', function() {
