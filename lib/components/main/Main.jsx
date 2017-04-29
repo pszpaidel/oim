@@ -1,6 +1,6 @@
 import React from 'react';
-import LeftNavigatorContainer from '../leftNavigator/container/LeftNavigatorContainer';
-import Recipe from '../recipe/component/Recipe';
+import Recipe from '../recipe/Recipe';
+import NavigatorContainer from '../navigator/NavigatorContainer';
 
 class Main extends React.Component {
 
@@ -11,7 +11,7 @@ class Main extends React.Component {
   render() {
     return (
       <div className="main">
-        <LeftNavigatorContainer items={this.props.category} />
+        <NavigatorContainer category={this.props.category} />
         <Recipe value={this.props.recipe} />
       </div>
     );

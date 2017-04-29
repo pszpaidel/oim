@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const LiveReloadPlugin = require('webpack-livereload-plugin');
 const CircularDependencies = require('circular-dependency-plugin');
 
 const srcPath = path.join(__dirname, './lib');
@@ -16,14 +15,12 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
-  devtool: 'inline-source-map',
   plugins: [
     new ExtractTextPlugin("bundle.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin(),
-    new LiveReloadPlugin({appendScriptTag: true}),
   ],
   module: {
     loaders: [
@@ -40,6 +37,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: [srcPath],
         query: {
+          warnings: false,
           fix: true
         }
       },

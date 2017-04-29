@@ -4,7 +4,7 @@
   "description": "Cookbook",
   "scripts": {
     "dev": "npm run clean-dist && webpack --config=webpack.config.js",
-    "dev-watch": "npm run clean-dist && webpack --config=webpack.config.js --watch",
+    "dev-watch": "npm run clean-dist && webpack --config=webpack.config.js --watch --progress",
     "prod": "npm run clean-dist && webpack --config=webpack.config.prod.js",
     "lint-fix": "eslint ./lib/index.jsx --fix",
     "test": "mocha",
