@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { Menu } from 'antd';
 
 const SubMenu = Menu.SubMenu;
@@ -39,11 +40,17 @@ class Navigator extends React.Component {
   }
 
   render() {
-    const list = this.props.categories.map((value, index) =>
-      <SubMenu key={index} title={<span>{value.name}</span>}>
-        <Menu.Item key="1">Option 1</Menu.Item>
-        <Menu.Item key="2">Option 2</Menu.Item>
+    const categories = this.props.model.category;
+    const recipes = this.props.model.recipes;
+
+    const list = categories.map((value, index) => {
+      const items = _.map(_.filter(recipes, r => r.category === value.id),
+            v => <Menu.Item key={v.id}>{v.title}</Menu.Item>);
+
+      return (<SubMenu key={index} title={<span>{value.name}</span>} >
+        {items}
       </SubMenu>);
+    });
 
     return (
       <div className="navigator">
@@ -63,7 +70,7 @@ class Navigator extends React.Component {
 }
 
 Navigator.propTypes = {
-  categories: React.PropTypes.array.isRequired,
+  model: React.PropTypes.object.isRequired,
   onClick: React.PropTypes.func.isRequired,
 };
 

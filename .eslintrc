@@ -2,7 +2,6 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "plugins": [
-    "flowtype"
   ],
   "rules": {
     "no-console": 0,
