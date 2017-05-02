@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { Menu } from 'antd';
+import { Menu, Button } from 'antd';
 
 const SubMenu = Menu.SubMenu;
 
@@ -58,12 +58,16 @@ class Navigator extends React.Component {
           mode="inline"
           openKeys={this.state.openKeys}
           selectedKeys={[this.state.current]}
-          style={{ width: 240, height: '100%' }}
+          style={{ width: 240 }}
           onOpenChange={this.onOpenChange}
           onClick={this.handleClick}
         >
           {list}
         </Menu>
+        <div className="navigator-add-button">
+          <br />
+          <Button onClick={this.props.onAddRecipe}>Dodaj przepis</Button>
+        </div>
       </div>
     );
   }
@@ -72,6 +76,7 @@ class Navigator extends React.Component {
 Navigator.propTypes = {
   model: React.PropTypes.object.isRequired,
   onClick: React.PropTypes.func.isRequired,
+  onAddRecipe: React.PropTypes.func.isRequired,
 };
 
 export default Navigator;
