@@ -44,10 +44,14 @@ class Navigator extends React.Component {
     const recipes = this.props.model.recipes;
 
     const list = categories.map((value, index) => {
-      const items = _.map(_.filter(recipes, r => r.category === value.id),
-            v => <Menu.Item key={v.id}>{v.title}</Menu.Item>);
+      const items = [];
+      _.forIn(recipes, (v, key) => {
+        if (v.category === value.id) {
+          items.push(<Menu.Item key={key}>{v.title}</Menu.Item>);
+        }
+      });
 
-      return (<SubMenu key={index} title={<span>{value.name}</span>} >
+      return (<SubMenu key={index} title={<span>{value.name}</span>}>
         {items}
       </SubMenu>);
     });

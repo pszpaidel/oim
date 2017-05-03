@@ -1,10 +1,21 @@
 import React from 'react';
-import { Input, Button, Select } from 'antd';
 import _ from 'lodash';
+import { Input, Button, Select, Icon } from 'antd';
+import Gap from '../gap/Gap';
 
 const Option = Select.Option;
 
 class Form extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      category: null,
+      content: '',
+      ingredients: [],
+    };
+  }
 
   onChange(e) {
     this.setState(_.assign({}, this.state, { [e.target.id]: e.target.value }));
@@ -14,8 +25,40 @@ class Form extends React.Component {
     this.setState(_.assign({}, this.state, { category: value }));
   }
 
+  onAddIngredients() {
+    const prevIngredients = _.concat(this.state.ingredients, '');
+    this.setState(_.assign({}, this.state, { ingredients: prevIngredients }));
+  }
+
+  onChangeIngredients(e, index) {
+    const ingredients = _.clone(this.state.ingredients);
+    ingredients[index] = e.target.value;
+    this.setState(_.assign({}, this.state, { ingredients }));
+  }
+
+  onRemoveIngredients(index) {
+    _.remove(this.state.ingredients, (v, i) => i === index);
+    this.setState(_.assign({}, this.state, { ingredients: _.clone(this.state.ingredients) }));
+  }
+
+
   render() {
-    console.log(this.state);
+    const ingredients = _.map(this.state.ingredients,
+      ((v, i) =>
+        <div >
+          <div className="form-ingredients">
+            <Input
+              style={{ width: 200 }}
+              onChange={data => this.onChangeIngredients(data, i)}
+              key={i}
+              value={v}
+            />
+            <Gap />
+            <Button onClick={() => this.onRemoveIngredients(i)}><Icon type="minus-circle-o" /></Button>
+          </div>
+          <Gap />
+        </div>));
+
     return (
       <div className="form">
         <div className="form-fields">
@@ -24,6 +67,7 @@ class Form extends React.Component {
             id="title"
             onChange={v => this.onChange(v)}
           />
+          <Gap />
           <div className="font-bold">Kategoria</div>
           <Select
             onChange={v => this.onChangeDropDown(v)}
@@ -37,8 +81,13 @@ class Form extends React.Component {
             <Option value="5">Koktaile</Option>
             <Option value="4">Inne</Option>
           </Select>
+
+          <Gap />
           <div className="font-bold">Składniki</div>
-          <Input id="ingredients" onChange={v => this.onChange(v)} />
+          {ingredients}
+          <Button onClick={() => this.onAddIngredients()}>Dodaj składnik <Icon type="plus-circle-o" /></Button>
+
+          <Gap />
           <div className="font-bold">Przygotowanie</div>
           <Input
             id="content"
@@ -46,10 +95,10 @@ class Form extends React.Component {
             type="textarea"
             rows={25}
           />
-          <div>
-            <br />
-            <Button onClick={() => this.props.onClickSave(this.state)}>Zapisz</Button>
-          </div>
+
+          <Gap />
+          <Button onClick={() => this.props.onClickSave(this.state)}>Zapisz</Button>
+
         </div>
       </div>
     );
