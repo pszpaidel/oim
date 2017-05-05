@@ -6,21 +6,25 @@ class Recipe extends React.Component {
   render() {
     if (!this.props.recipe) return null;
 
-    const ingredients = _.get(this.props.recipe, 'ingredients');
-    let ingredientsList = null;
+    const components = _.get(this.props.recipe, 'components');
+    let componentList = null;
 
-    if (ingredients) {
-      ingredientsList = ingredients.map((data, i) => <li key={i}>{data}</li>);
+    if (components) {
+      componentList = components.map((data, i) => <li key={i}>{data}</li>);
     }
 
     return (
       <div className="recipe">
         <div className="font-x-large font-bold">{this.props.recipe.title}</div>
         <Gap />
+        <div className="font-large font-bold">Porcja</div>
+        <Gap />
+        <div className="font-medium">{this.props.recipe.portion}</div>
+        <Gap />
         <div className="font-large font-bold">Składniki</div>
         <Gap />
-        <div className="recipe-ingredients font-medium">
-          <ul>{ingredientsList}</ul>
+        <div className="recipe-components ">
+          <ul>{componentList}</ul>
         </div>
         <Gap />
         <div className="font-large font-bold">Przygotowanie</div>

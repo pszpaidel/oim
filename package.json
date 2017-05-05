@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run clean-dist && webpack --config=webpack.config.js",
     "dev-watch": "npm run clean-dist && webpack --config=webpack.config.js --watch --progress",
-    "prod": "npm run clean-dist && webpack --config=webpack.config.prod.js",
+    "prod": "npm run clean-dist && webpack --config=webpack.config.prod.js --progress",
     "lint-fix": "eslint ./lib/index.jsx --fix",
     "test": "mocha",
     "test-watch": "mocha -w",
@@ -41,6 +41,7 @@
   "dependencies": {
     "antd": "^2.9.0",
     "axios": "^0.15.3",
+    "d3": "^4.8.0",
     "firebase": "^3.7.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",

@@ -1,60 +1,88 @@
 import React from 'react';
 import _ from 'lodash';
+import * as d3 from 'd3';
 import { Input, Button, Select, Icon } from 'antd';
 import Gap from '../gap/Gap';
+import Recipe from '../../model/recipe';
 
 const Option = Select.Option;
+const style = { width: 200 };
 
 class Form extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      title: '',
-      category: null,
-      content: '',
-      ingredients: [],
-    };
+    this.state = new Recipe();
+    this.isComponentsUpdate = false;
+  }
+
+  componentDidUpdate() {
+    if (this.isComponentsUpdate) this.onFocus();
+    this.isComponentsUpdate = false;
   }
 
   onChange(e) {
-    this.setState(_.assign({}, this.state, { [e.target.id]: e.target.value }));
+    this.setState(_.assign(
+      {},
+      this.state,
+      { [e.target.id]: e.target.value }));
   }
 
   onChangeDropDown(value) {
-    this.setState(_.assign({}, this.state, { category: value }));
+    this.setState(_.assign(
+      {},
+      this.state,
+      { category: value }));
   }
 
-  onAddIngredients() {
-    const prevIngredients = _.concat(this.state.ingredients, '');
-    this.setState(_.assign({}, this.state, { ingredients: prevIngredients }));
+  onAddcomponents() {
+    this.isComponentsUpdate = true;
+    const prevComponents = _.concat(this.state.components, '');
+
+    this.setState(_.assign(
+      {},
+      this.state,
+      { components: prevComponents }));
   }
 
-  onChangeIngredients(e, index) {
-    const ingredients = _.clone(this.state.ingredients);
-    ingredients[index] = e.target.value;
-    this.setState(_.assign({}, this.state, { ingredients }));
+  onChangecomponents(e, index) {
+    const components = _.clone(this.state.components);
+    components[index] = e.target.value;
+
+    this.setState(_.assign(
+      {},
+      this.state,
+      { components }));
   }
 
-  onRemoveIngredients(index) {
-    _.remove(this.state.ingredients, (v, i) => i === index);
-    this.setState(_.assign({}, this.state, { ingredients: _.clone(this.state.ingredients) }));
+  onRemovecomponents(index) {
+    _.remove(this.state.components, (v, i) => i === index);
+    this.setState(_.assign(
+      {},
+      this.state,
+      { components: _.clone(this.state.components) }));
   }
 
+  onFocus() {
+    d3.select(`#in${_.size(this.state.components) - 1}`).node().focus();
+  }
 
   render() {
-    const ingredients = _.map(this.state.ingredients,
+    const components = _.map(this.state.components,
       ((v, i) =>
-        <div >
-          <div className="form-ingredients">
+        <div key={i}>
+          <div className="form-components">
             <Input
-              style={{ width: 200 }}
-              onChange={data => this.onChangeIngredients(data, i)}
-              key={i}
+              id={`in${i}`}
+              style={style}
+              onChange={data => this.onChangecomponents(data, i)}
+              onPressEnter={() => this.onAddcomponents()}
               value={v}
             />
             <Gap />
-            <Button onClick={() => this.onRemoveIngredients(i)}><Icon type="minus-circle-o" /></Button>
+            <Button onClick={() => this.onRemovecomponents(i)}>
+              <Icon type="minus-circle-o" />
+            </Button>
           </div>
           <Gap />
         </div>));
@@ -68,11 +96,18 @@ class Form extends React.Component {
             onChange={v => this.onChange(v)}
           />
           <Gap />
+          <div className="font-bold">Porcja</div>
+          <Input
+            id="portion"
+            style={style}
+            onChange={v => this.onChange(v)}
+          />
+          <Gap />
           <div className="font-bold">Kategoria</div>
           <Select
-            onChange={v => this.onChangeDropDown(v)}
+            onChange={data => this.onChangeDropDown(data)}
             placeholder="wybierz kategorie"
-            style={{ width: 200 }}
+            style={style}
           >
             <Option value="0">Śniadanie</Option>
             <Option value="1">Obiad</Option>
@@ -81,24 +116,20 @@ class Form extends React.Component {
             <Option value="5">Koktaile</Option>
             <Option value="4">Inne</Option>
           </Select>
-
           <Gap />
           <div className="font-bold">Składniki</div>
-          {ingredients}
-          <Button onClick={() => this.onAddIngredients()}>Dodaj składnik <Icon type="plus-circle-o" /></Button>
-
+          {components}
+          <Button onClick={() => this.onAddcomponents()}>Dodaj składnik <Icon type="plus-circle-o" /></Button>
           <Gap />
           <div className="font-bold">Przygotowanie</div>
           <Input
             id="content"
-            onChange={v => this.onChange(v)}
+            onChange={data => this.onChange(data)}
             type="textarea"
             rows={25}
           />
-
           <Gap />
-          <Button onClick={() => this.props.onClickSave(this.state)}>Zapisz</Button>
-
+          <Button onClick={() => this.props.onSave(this.state)}>Zapisz</Button>
         </div>
       </div>
     );
@@ -106,7 +137,7 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  onClickSave: React.PropTypes.func.isRequired,
+  onSave: React.PropTypes.func.isRequired,
 };
 
 export default Form;
