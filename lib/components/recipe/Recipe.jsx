@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+// import {Button} from 'antd';
 import Gap from '../gap/Gap';
 
 class Recipe extends React.Component {
@@ -13,9 +14,21 @@ class Recipe extends React.Component {
       componentList = components.map((data, i) => <li key={i}>{data}</li>);
     }
 
+    const gallery = _.map(this.props.recipe.photos, data =>
+      <div className="form-gallery">
+        <img alt="img" src={data} width="180" height="120" />
+        <Gap />
+      </div>,
+    );
+
     return (
+
       <div className="recipe">
         <div className="font-x-large font-bold">{this.props.recipe.title}</div>
+        <Gap />
+        <div className="form-gallery">
+          {gallery}
+        </div>
         <Gap />
         <div className="font-large font-bold">Porcja</div>
         <Gap />

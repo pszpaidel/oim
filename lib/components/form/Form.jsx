@@ -67,6 +67,14 @@ class Form extends React.Component {
     d3.select(`#in${_.size(this.state.components) - 1}`).node().focus();
   }
 
+  onUploadSuccess(value) {
+    this.setState(_.assign(
+      {},
+      this.state,
+      { photos: _.union(this.state.photos, [value.downloadURL]) }),
+    );
+  }
+
   render() {
     const components = _.map(this.state.components,
       ((v, i) =>
@@ -94,7 +102,7 @@ class Form extends React.Component {
         </Card>
         <Gap />
       </div>,
-      );
+    );
 
     return (
       <div className="form">
@@ -138,17 +146,22 @@ class Form extends React.Component {
             rows={25}
           />
           <Gap />
-          <Upload
-            onChange={(e) => {
-              this.props.onUpload(e.file.originFileObj);
-            }} showUploadList={false}
-          >
-            <Button><Icon type="upload" />Dodaj zdjęcie</Button>
-          </Upload>
+
           <Gap />
 
           <div className="form-gallery">
             {gallery}
+            <Upload
+              onChange={(e) => {
+                this.props.onUpload(e.file.originFileObj, value => this.onUploadSuccess(value));
+              }} showUploadList={false}
+            >
+              <Button
+                type="dashed"
+                style={{ width: 150, height: 180 }}
+              >
+                <Icon type="upload" />Dodaj zdjęcie</Button>
+            </Upload>
           </div>
 
           <Gap />
