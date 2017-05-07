@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import * as d3 from 'd3';
-import { Input, Button, Select, Icon } from 'antd';
+import { Input, Button, Select, Icon, Upload, Card } from 'antd';
 import Gap from '../gap/Gap';
 import Recipe from '../../model/recipe';
 
@@ -87,6 +87,15 @@ class Form extends React.Component {
           <Gap />
         </div>));
 
+    const gallery = _.map(this.state.photos, (data, i) =>
+      <div className="form-gallery">
+        <Card style={{ width: 150 }} title={`${i + 1}.`} extra={<a>Usuń</a>}>
+          <img alt="img" src={data} width="100%" />
+        </Card>
+        <Gap />
+      </div>,
+      );
+
     return (
       <div className="form">
         <div className="form-fields">
@@ -129,6 +138,20 @@ class Form extends React.Component {
             rows={25}
           />
           <Gap />
+          <Upload
+            onChange={(e) => {
+              this.props.onUpload(e.file.originFileObj);
+            }} showUploadList={false}
+          >
+            <Button><Icon type="upload" />Dodaj zdjęcie</Button>
+          </Upload>
+          <Gap />
+
+          <div className="form-gallery">
+            {gallery}
+          </div>
+
+          <Gap />
           <Button onClick={() => this.props.onSave(this.state)}>Zapisz</Button>
         </div>
       </div>
@@ -138,6 +161,7 @@ class Form extends React.Component {
 
 Form.propTypes = {
   onSave: React.PropTypes.func.isRequired,
+  onUpload: React.PropTypes.func.isRequired,
 };
 
 export default Form;
