@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import * as d3 from 'd3';
-import { Input, Button, Select, Icon, Upload, Card } from 'antd';
+import { Input, Button, Select, Icon, Card } from 'antd';
 import Gap from '../gap/Gap';
 import Recipe from '../../model/recipe';
 
@@ -68,6 +68,7 @@ class Form extends React.Component {
   }
 
   onUploadSuccess(value) {
+    this.uploadInput.value = null;
     this.setState(_.assign(
       {},
       this.state,
@@ -146,24 +147,19 @@ class Form extends React.Component {
             rows={25}
           />
           <Gap />
-
+          <input
+            ref={(value) => { this.uploadInput = value; }}
+            type="file"
+            name="pic"
+            accept="image/*"
+            onChange={(e) => {
+              this.props.onUpload(e.target.files[0], value => this.onUploadSuccess(value));
+            }}
+          />
           <Gap />
-
           <div className="form-gallery">
             {gallery}
-            <Upload
-              onChange={(e) => {
-                this.props.onUpload(e.file.originFileObj, value => this.onUploadSuccess(value));
-              }} showUploadList={false}
-            >
-              <Button
-                type="dashed"
-                style={{ width: 150, height: 180 }}
-              >
-                <Icon type="upload" />Dodaj zdjęcie</Button>
-            </Upload>
           </div>
-
           <Gap />
           <Button onClick={() => this.props.onSave(this.state)}>Zapisz</Button>
         </div>
