@@ -32,12 +32,14 @@
 
   .main {
     height: 100%;
+    width: 100%;
   }
 
   .navigator {
     height: 100%;
     float: left;
     display: inline-block;
+    border-right: #D1D1D1 solid 1px;
   }
 
   .navigator-add-button {
@@ -94,5 +96,16 @@
   .recipe-components {
     .font-medium;
     padding-left: 20px;
+  }
+
+  .spinner {
+    position: absolute;
+    top: ~"calc(50% - 16px)";
+    left: ~"calc(50% - 16px)";
+  }
+
+  .content{
+    height: 100%;
+    width: 100%;
   }
 }
