@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Cookbook",
   "scripts": {
-    "dev": "npm run clean-dist && webpack --config=webpack.config.js",
-    "dev-watch": "npm run clean-dist && webpack --config=webpack.config.js --watch --progress",
-    "prod": "npm run clean-dist && webpack --config=webpack.config.prod.js --progress",
+    "dev": "npm run clean-dev && webpack --config=webpack.config.js",
+    "watch": "npm run clean-dev && webpack --config=webpack.config.js --watch --progress",
+    "build": "npm run clean-build && webpack --config=webpack.config.prod.js --progress",
     "lint-fix": "eslint ./lib/index.jsx --fix",
     "test": "mocha",
     "test-watch": "mocha -w",
-    "clean-dist": "rimraf ./dist/*",
+    "clean-dev": "rimraf ./dist/dev/bundle.*",
+    "clean-build": "rimraf ./dist/prod/public/bundle.*",
     "clean-nm": "rimraf ./node_modules"
   },
   "devDependencies": {

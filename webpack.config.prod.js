@@ -8,7 +8,7 @@ const entryJS = path.join(__dirname, './lib/index.jsx');
 module.exports = {
   entry: [entryJS],
   output: {
-    path: 'dist',
+    path: 'dist/prod/public',
     filename: 'bundle.min.js'
   },
   resolve: {

@@ -9,7 +9,7 @@ const entryJS = path.join(__dirname, './lib/index');
 module.exports = {
   entry: [entryJS],
   output: {
-    path: 'dist',
+    path: 'dist/dev',
     filename: 'bundle.js'
   },
   resolve: {

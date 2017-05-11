@@ -72,7 +72,24 @@ class Form extends React.Component {
     this.setState(_.assign(
       {},
       this.state,
-      { photos: _.union(this.state.photos, [value.downloadURL]) }),
+      {
+        photos: _.union(this.state.photos, [
+          {
+            url: value.downloadURL,
+            path: value.ref.location.path,
+          },
+        ]),
+      }),
+    );
+  }
+
+  onDelete(path) {
+    this.props.onDeleteUploadedImage(path);
+    this.setState(_.assign(
+      {},
+      this.state, {
+        photos: _.filter(this.state.photos, image => image.path !== path),
+      }),
     );
   }
 
@@ -80,7 +97,7 @@ class Form extends React.Component {
     const components = _.map(this.state.components,
       ((v, i) =>
         <div key={i}>
-          <div className="form-components">
+          <div className="display-flex">
             <Input
               id={`in${i}`}
               style={style}
@@ -97,9 +114,13 @@ class Form extends React.Component {
         </div>));
 
     const gallery = _.map(this.state.photos, (data, i) =>
-      <div className="form-gallery">
-        <Card style={{ width: 150 }} title={`${i + 1}.`} extra={<a>Usuń</a>}>
-          <img alt="img" src={data} width="100%" />
+      <div className="dispaly-flex">
+        <Card
+          style={{ width: 150 }}
+          title={`${i + 1}.`}
+          extra={<a onClick={() => this.onDelete(data.path)}>Usuń</a>}
+        >
+          <img alt="img" src={data.url} width="100%" />
         </Card>
         <Gap />
       </div>,
@@ -137,7 +158,10 @@ class Form extends React.Component {
           <Gap />
           <div className="font-bold">Składniki</div>
           {components}
-          <Button onClick={() => this.onAddcomponents()}>Dodaj składnik <Icon type="plus-circle-o" /></Button>
+          <Button
+            onClick={() => this.onAddcomponents()}
+          >Dodaj składnik
+            <Icon type="plus-circle-o" /></Button>
           <Gap />
           <div className="font-bold">Przygotowanie</div>
           <Input
@@ -148,7 +172,9 @@ class Form extends React.Component {
           />
           <Gap />
           <input
-            ref={(value) => { this.uploadInput = value; }}
+            ref={(value) => {
+              this.uploadInput = value;
+            }}
             type="file"
             name="pic"
             accept="image/*"
@@ -157,7 +183,7 @@ class Form extends React.Component {
             }}
           />
           <Gap />
-          <div className="form-gallery">
+          <div className="display-flex">
             {gallery}
           </div>
           <Gap />
@@ -171,6 +197,7 @@ class Form extends React.Component {
 Form.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onUpload: React.PropTypes.func.isRequired,
+  onDeleteUploadedImage: React.PropTypes.func.isRequired,
 };
 
 export default Form;

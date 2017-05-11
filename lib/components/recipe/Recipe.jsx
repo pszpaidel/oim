@@ -37,10 +37,10 @@ class Recipe extends React.Component {
     }
 
     const gallery = _.map(this.props.recipe.photos, data =>
-      <div className="form-gallery">
-        <div onClick={() => this.onClickGallery(data)}>
+      <div className="display-flex">
+        <div onClick={() => this.onClickGallery(data.url)}>
           <img
-            src={data}
+            src={data.url}
             style={{ cursor: 'pointer', 'border-radius': '5px' }}
             width="180" height="120"
           />
@@ -66,12 +66,12 @@ class Recipe extends React.Component {
           />
         </Modal>
 
-        <div className="form-components">
+        <div className="display-flex">
           <div className="recipe-header-title font-x-large font-bold">{this.props.recipe.title}</div>
           <div className="recipe-header-portion font-large font-bold">Porcja: {this.props.recipe.portion}</div>
         </div>
         <Gap />
-        <div className="form-gallery">
+        <div className="display-flex">
           {gallery}
         </div>
         <Gap />
