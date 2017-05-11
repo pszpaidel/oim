@@ -1,5 +1,6 @@
 node_modules
 .idea
-dist
+dist/dev
+dist/prod/public/bundle.*
 projects.iml
 oim.iml
