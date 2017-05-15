@@ -26,6 +26,7 @@ class Recipe extends React.Component {
     this.forceUpdate();
   }
 
+
   render() {
     if (!this.props.recipe) return null;
 

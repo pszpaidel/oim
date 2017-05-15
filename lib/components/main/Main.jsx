@@ -3,7 +3,7 @@ import { Spin } from 'antd';
 import RecipeNavigator from '../recipe/RecipeNavigator';
 import FormContainer from '../form/FormContainer';
 import NavigatorContainer from '../navigator/NavigatorContainer';
-import { RECIPE, FORM } from '../../const/CookbookConst';
+import { RECIPE_VIEW, FORM_VIEW } from '../../const/CookbookConst';
 
 class Main extends React.Component {
 
@@ -17,10 +17,10 @@ class Main extends React.Component {
 
     if (this.props.isReady) {
       switch (this.props.view) {
-        case RECIPE:
+        case RECIPE_VIEW:
           content = <RecipeNavigator />;
           break;
-        case FORM:
+        case FORM_VIEW:
           content = <FormContainer />;
           break;
         default:
