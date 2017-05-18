@@ -43,6 +43,7 @@
   "dependencies": {
     "antd": "^2.9.0",
     "axios": "^0.15.3",
+    "clipboard-js": "^0.3.3",
     "d3": "^4.8.0",
     "firebase": "^3.7.0",
     "lodash": "^4.17.4",
