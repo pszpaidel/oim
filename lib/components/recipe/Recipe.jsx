@@ -42,7 +42,7 @@ class Recipe extends React.Component {
         <div onClick={() => this.onClickGallery(data.url)}>
           <img
             src={data.url}
-            style={{ cursor: 'pointer', 'border-radius': '5px' }}
+            style={{ cursor: 'pointer', borderRadius: '5px' }}
             width="180" height="120"
           />
         </div>
@@ -61,7 +61,7 @@ class Recipe extends React.Component {
           onCancel={() => this.hideGallery()}
         >
           <img
-            style={{ 'border-radius': '10px' }}
+            style={{ borderRadius: '10px' }}
             src={this.galleryImageUrl}
             width="100%" height="100%"
           />

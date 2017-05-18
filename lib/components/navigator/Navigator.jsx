@@ -5,33 +5,16 @@ import Gap from '../gap/Gap';
 
 const SubMenu = Menu.SubMenu;
 
+const getEmptyState = () => ({ current: '', openKeys: [] });
+
 class Navigator extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      current: '',
-      openKeys: [],
-    };
+    this.state = getEmptyState();
 
     this.onOpenChange = (openKeys) => {
-      const state = this.state;
-      const latestOpenKey = openKeys.find(key => !(state.openKeys.indexOf(key) > -1));
-      const latestCloseKey = state.openKeys.find(key => !(openKeys.indexOf(key) > -1));
-
-      let nextOpenKeys = [];
-      if (latestOpenKey) {
-        nextOpenKeys = this.getAncestorKeys(latestOpenKey).concat(latestOpenKey);
-      }
-      if (latestCloseKey) {
-        nextOpenKeys = this.getAncestorKeys(latestCloseKey);
-      }
-      this.setState({ openKeys: nextOpenKeys });
-    };
-
-    this.getAncestorKeys = (key) => {
-      const map = {};
-      return map[key] || [];
+      this.setState({ openKeys });
     };
 
     this.handleClick = (e) => {
@@ -40,11 +23,27 @@ class Navigator extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (!nextProps.model || !nextProps.model.recipe) {
+      this.setState(getEmptyState());
+      return;
+    }
+
+    const current = _.findKey(
+      nextProps.model.recipes,
+      value => value.title === nextProps.model.recipe.title);
+
+    if (!current) return;
+
+    const openKeys = [nextProps.model.recipe.category];
+    this.setState({ current, openKeys });
+  }
+
   render() {
     const categories = this.props.model.category;
     const recipes = this.props.model.recipes;
 
-    const list = categories.map((value, index) => {
+    const list = categories.map((value) => {
       const items = [];
       _.forIn(recipes, (v, key) => {
         if (v.category === value.id) {
@@ -52,7 +51,7 @@ class Navigator extends React.Component {
         }
       });
 
-      return (<SubMenu key={index} title={<span>{value.name}</span>}>
+      return (<SubMenu key={value.id} title={<span>{value.name}</span>}>
         {items}
       </SubMenu>);
     });
@@ -64,8 +63,8 @@ class Navigator extends React.Component {
           openKeys={this.state.openKeys}
           selectedKeys={[this.state.current]}
           style={{ width: 240, 'border-right': 0 }}
-          onOpenChange={this.onOpenChange}
           onClick={this.handleClick}
+          onOpenChange={this.onOpenChange}
         >
           {list}
         </Menu>
