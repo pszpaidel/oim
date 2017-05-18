@@ -45,7 +45,7 @@ class Form extends React.Component {
       { components: prevComponents }));
   }
 
-  onChangecomponents(e, index) {
+  onChangeComponents(e, index) {
     const components = _.clone(this.state.components);
     components[index] = e.target.value;
 
@@ -101,7 +101,7 @@ class Form extends React.Component {
             <Input
               id={`in${i}`}
               style={style}
-              onChange={data => this.onChangecomponents(data, i)}
+              onChange={data => this.onChangeComponents(data, i)}
               onPressEnter={() => this.onAddcomponents()}
               value={v}
             />
