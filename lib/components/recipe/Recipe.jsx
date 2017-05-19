@@ -1,7 +1,7 @@
 import React from 'react';
 import clipboard from 'clipboard-js';
 import _ from 'lodash';
-import { Modal, Button } from 'antd';
+import { Modal, Button, Tooltip } from 'antd';
 import Gap from '../gap/Gap';
 
 class Recipe extends React.Component {
@@ -28,7 +28,7 @@ class Recipe extends React.Component {
   }
 
   copyToClipbard() {
-    clipboard.copy(String(_.get(this.props.recipe, 'components')));
+    clipboard.copy(_.get(this.props.recipe, 'components').join(' \n'));
   }
 
   render() {
@@ -80,13 +80,23 @@ class Recipe extends React.Component {
           {gallery}
         </div>
         <Gap />
-        <div className="font-large font-bold">Składniki</div>
+        <div className="recipe-header font-large font-bold">Składniki</div>
         <Gap />
-        <div className="recipe-components ">
-          <ul>{componentList}</ul>
+        <div className="display-flex">
+          <div className="recipe-components">
+            <ul>{componentList}</ul>
+          </div>
+          <Tooltip title="Kopiuj listę składników do schowka">
+            <Button
+              size="large"
+              icon="copy"
+              shape="circle"
+              onClick={() => this.copyToClipbard(componentList)}
+            />
+          </Tooltip>
         </div>
         <Gap />
-        <Button onClick={() => this.copyToClipbard(componentList)}>Kopiuj do schowka</Button>
+
         <Gap />
         <div className="recipe-header font-large font-bold">Przygotowanie</div>
         <Gap />
