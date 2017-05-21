@@ -93,6 +93,20 @@ class Form extends React.Component {
     );
   }
 
+  onMoveComponent(i, to) {
+    const result = _.clone(this.state.components);
+    const element = result[i];
+    result.splice(i, 1);
+    result.splice(i + to, 0, element);
+
+    this.setState(_.assign(
+      {},
+      this.state, {
+        components: result,
+      }),
+    );
+  }
+
   render() {
     const components = _.map(this.state.components,
       ((v, i) =>
@@ -106,9 +120,25 @@ class Form extends React.Component {
               value={v}
             />
             <Gap />
-            <Button onClick={() => this.onRemovecomponents(i)}>
-              <Icon type="minus-circle-o" />
-            </Button>
+            <div className="display-flex">
+              <Button
+                icon="close-square-o"
+                onClick={() => this.onRemovecomponents(i)}
+              />
+              <Gap />
+              <Gap />
+              <Button
+                icon="up-square-o"
+                disabled={i === 0}
+                onClick={() => this.onMoveComponent(i, -1)}
+              />
+              <Gap style={{ height: '10px', width: '5px' }} />
+              <Button
+                disabled={i === this.state.components.length - 1}
+                icon="down-square-o"
+                onClick={() => this.onMoveComponent(i, 1)}
+              />
+            </div>
           </div>
           <Gap />
         </div>));
