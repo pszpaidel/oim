@@ -7,7 +7,23 @@ const srcPath = path.join(__dirname, './lib');
 const entryJS = path.join(__dirname, './lib/index');
 
 module.exports = {
-  entry: [entryJS],
+  entry: {
+    app: entryJS,
+    vendor: [
+    "antd",
+    "axios",
+    "clipboard-js",
+    "d3",
+    "firebase",
+    "lodash",
+    "moment",
+    "react",
+    "react-dom",
+    "react-redux",
+    "redux",
+    "redux-thunk"
+    ], 
+  },
   output: {
     path: 'dist/dev',
     filename: 'bundle.js'
@@ -21,6 +37,7 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js")
   ],
   module: {
     loaders: [

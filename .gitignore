@@ -1,8 +1,6 @@
 node_modules
-.idea
 .vscode
-dist/dev
+dist/dev/bundle.*
+dist/dev/vendor.js
 dist/prod/public/bundle.*
-projects.iml
-oim.iml
-/nbproject/private/
+dist/prod/public/vendor.js

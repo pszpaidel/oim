@@ -6,7 +6,23 @@ const srcPath = path.join(__dirname, './lib');
 const entryJS = path.join(__dirname, './lib/index.jsx');
 
 module.exports = {
-  entry: [entryJS],
+  entry: {
+    app: entryJS,
+    vendor: [
+    "antd",
+    "axios",
+    "clipboard-js",
+    "d3",
+    "firebase",
+    "lodash",
+    "moment",
+    "react",
+    "react-dom",
+    "react-redux",
+    "redux",
+    "redux-thunk"
+    ], 
+  },
   output: {
     path: 'dist/prod/public',
     filename: 'bundle.min.js'
@@ -30,7 +46,8 @@ module.exports = {
       },
       'screw-ie8': true
     }),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.min.js")
   ],
   module: {
     loaders: [
