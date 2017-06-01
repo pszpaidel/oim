@@ -38,7 +38,7 @@ class Recipe extends React.Component {
     let componentList = null;
 
     if (components) {
-      componentList = components.map((data, i) => <li key={i}>{data}</li>);
+      componentList = components.map(data => <li key={data}>{data}</li>);
     }
 
     const gallery = _.map(this.props.recipe.photos, data =>

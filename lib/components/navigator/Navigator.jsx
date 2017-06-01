@@ -24,28 +24,25 @@ class Navigator extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.model || !nextProps.model.recipe) {
+    if (!nextProps.recipes) {
       this.setState(getEmptyState());
       return;
     }
 
     const current = _.findKey(
-      nextProps.model.recipes,
-      value => value.title === nextProps.model.recipe.title);
+      nextProps.recipes,
+      value => value.title === nextProps.recipe.title);
 
     if (!current) return;
 
-    const openKeys = [nextProps.model.recipe.category];
+    const openKeys = [nextProps.recipe.category];
     this.setState({ current, openKeys });
   }
 
   render() {
-    const categories = this.props.model.category;
-    const recipes = this.props.model.recipes;
-
-    const list = categories.map((value) => {
+    const list = this.props.categories.map((value) => {
       const items = [];
-      _.forIn(recipes, (v, key) => {
+      _.forIn(this.props.recipes, (v, key) => {
         if (v.category === value.id) {
           items.push(<Menu.Item key={key}>{v.title}</Menu.Item>);
         }
@@ -78,7 +75,9 @@ class Navigator extends React.Component {
 }
 
 Navigator.propTypes = {
-  model: React.PropTypes.object.isRequired,
+  recipe: React.PropTypes.object,
+  recipes: React.PropTypes.array,
+  categories: React.PropTypes.array,
   onClick: React.PropTypes.func.isRequired,
   onAddRecipe: React.PropTypes.func.isRequired,
 };
