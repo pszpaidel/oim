@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spin } from 'antd';
-import RecipeNavigator from '../recipe/RecipeNavigator';
+import RecipeContainer from '../recipe/RecipeContainer';
 import FormContainer from '../form/FormContainer';
 import NavigatorContainer from '../navigator/NavigatorContainer';
 import { RECIPE_VIEW, FORM_VIEW } from '../../const/CookbookConst';
@@ -18,7 +18,7 @@ class Main extends React.Component {
     if (this.props.isReady) {
       switch (this.props.view) {
         case RECIPE_VIEW:
-          content = <RecipeNavigator />;
+          content = <RecipeContainer />;
           break;
         case FORM_VIEW:
           content = <FormContainer />;

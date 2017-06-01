@@ -52,7 +52,7 @@ class Recipe extends React.Component {
         </div>
         <Gap />
       </div>,
-      );
+    );
 
     return (
 

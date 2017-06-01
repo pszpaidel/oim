@@ -8,4 +8,3 @@ gap.propTypes = {
 };
 
 export default gap;
-

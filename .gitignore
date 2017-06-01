@@ -1,6 +1,6 @@
 node_modules
 .vscode
 dist/dev/bundle.*
-dist/dev/vendor.js
+dist/dev/vendor.*
 dist/prod/public/bundle.*
-dist/prod/public/vendor.js
+dist/prod/public/vendor.*

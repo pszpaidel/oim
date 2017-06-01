@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import * as d3 from 'd3';
-import { Input, Button, Select, Icon, Card } from 'antd';
+import { Input, Button, Select, Icon, Card, AutoComplete } from 'antd';
 import Gap from '../gap/Gap';
 import Recipe from '../../model/recipe';
 
@@ -17,8 +17,18 @@ class Form extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.isComponentsUpdate) this.onFocus();
+    if (this.isComponentsUpdate) {
+      d3.selectAll('.ant-select-search__field').each(function () {
+        this.focus();
+      });
+    }
+
     this.isComponentsUpdate = false;
+    d3.selectAll('.ant-select-search__field').on('keypress', () => {
+      if (d3.event.key === 'Enter') {
+        this.onAddcomponents();
+      }
+    });
   }
 
   onChange(e) {
@@ -45,9 +55,9 @@ class Form extends React.Component {
       { components: prevComponents }));
   }
 
-  onChangeComponents(e, index) {
+  onChangeComponents(value, index) {
     const components = _.clone(this.state.components);
-    components[index] = e.target.value;
+    components[index] = value;
 
     this.setState(_.assign(
       {},
@@ -61,10 +71,6 @@ class Form extends React.Component {
       {},
       this.state,
       { components: _.clone(this.state.components) }));
-  }
-
-  onFocus() {
-    d3.select(`#in${_.size(this.state.components) - 1}`).node().focus();
   }
 
   onUploadSuccess(value) {
@@ -112,11 +118,11 @@ class Form extends React.Component {
       ((v, i) =>
         <div key={i}>
           <div className="display-flex">
-            <Input
-              id={`in${i}`}
-              style={style}
+            <AutoComplete
+              dataSource={this.props.componentsProvider}
+              style={{ width: 200 }}
               onChange={data => this.onChangeComponents(data, i)}
-              onPressEnter={() => this.onAddcomponents()}
+              defaultActiveFirstOption={false}
               value={v}
             />
             <Gap />
@@ -228,6 +234,7 @@ Form.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onUpload: React.PropTypes.func.isRequired,
   onDeleteUploadedImage: React.PropTypes.func.isRequired,
+  componentsProvider: React.PropTypes.array,
 };
 
 export default Form;
