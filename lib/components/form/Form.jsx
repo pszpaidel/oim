@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import * as d3 from 'd3';
 import { Input, Button, Select, Icon, Card, AutoComplete } from 'antd';
-import Gap from '../gap/Gap';
+import Gap from '../layout/Gap';
 import Recipe from '../../model/recipe';
 
 const Option = Select.Option;

@@ -3,6 +3,7 @@ import { Spin } from 'antd';
 import RecipeContainer from '../recipe/RecipeContainer';
 import FormContainer from '../form/FormContainer';
 import NavigatorContainer from '../navigator/NavigatorContainer';
+import Display from '../layout/Display';
 import { RECIPE_VIEW, FORM_VIEW } from '../../const/CookbookConst';
 
 class Main extends React.Component {
@@ -12,35 +13,22 @@ class Main extends React.Component {
   }
 
   render() {
-    let view = null;
-    let content = null;
-
-    if (this.props.isReady) {
-      switch (this.props.view) {
-        case RECIPE_VIEW:
-          content = <RecipeContainer />;
-          break;
-        case FORM_VIEW:
-          content = <FormContainer />;
-          break;
-        default:
-          content = null;
-      }
-
-      view = (
-        <div className="content">
-          <NavigatorContainer />
-          {content}
-        </div>);
-    } else {
-      view = (<div className="spinner">
-        <Spin size="large" />
-      </div>);
-    }
-
     return (
       <div className="main">
-        {view}
+
+        <NavigatorContainer />
+        <Display
+          when={this.props.isReady && this.props.view === RECIPE_VIEW}
+          what={<RecipeContainer />}
+        />
+        <Display
+          when={this.props.isReady && this.props.view === FORM_VIEW}
+          what={<FormContainer />}
+        />
+        <Display
+          when={!this.props.isReady}
+          what={<div className="spinner"><Spin size="large" /></div>}
+        />
       </div>
     );
   }
@@ -48,8 +36,8 @@ class Main extends React.Component {
 
 Main.propTypes = {
   fetchCookbook: React.PropTypes.func.isRequired,
-  view: React.PropTypes.string,
   isReady: React.PropTypes.bool,
+  view: React.PropTypes.string,
 };
 
 export default Main;

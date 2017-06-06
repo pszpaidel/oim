@@ -2,7 +2,7 @@ import React from 'react';
 import clipboard from 'clipboard-js';
 import _ from 'lodash';
 import { Modal, Button, Tooltip } from 'antd';
-import Gap from '../gap/Gap';
+import Gap from '../layout/Gap';
 
 class Recipe extends React.Component {
 

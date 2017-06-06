@@ -1,11 +1,11 @@
 import React from 'react';
 import _ from 'lodash';
 import { Menu, Button } from 'antd';
-import Gap from '../gap/Gap';
+import Gap from '../layout/Gap';
 
 const SubMenu = Menu.SubMenu;
 
-const getEmptyState = () => ({ current: '', openKeys: [] });
+const getEmptyState = () => ({ current: '', open: [] });
 
 class Navigator extends React.Component {
 
@@ -13,8 +13,8 @@ class Navigator extends React.Component {
     super(props);
     this.state = getEmptyState();
 
-    this.onOpenChange = (openKeys) => {
-      this.setState({ openKeys });
+    this.onOpenChange = (open) => {
+      this.setState({ open });
     };
 
     this.handleClick = (e) => {
@@ -24,7 +24,7 @@ class Navigator extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.recipes) {
+    if (!nextProps.recipe) {
       this.setState(getEmptyState());
       return;
     }
@@ -35,11 +35,13 @@ class Navigator extends React.Component {
 
     if (!current) return;
 
-    const openKeys = [nextProps.recipe.category];
-    this.setState({ current, openKeys });
+    const open = [nextProps.recipe.category];
+    this.setState({ current, open });
   }
 
   render() {
+    if (!this.props.categories) return null;
+
     const list = this.props.categories.map((value) => {
       const items = [];
       _.forIn(this.props.recipes, (v, key) => {
@@ -57,9 +59,9 @@ class Navigator extends React.Component {
       <div className="navigator">
         <Menu
           mode="inline"
-          openKeys={this.state.openKeys}
+          openKeys={this.state.open}
           selectedKeys={[this.state.current]}
-          style={{ width: 240, 'border-right': 0 }}
+          style={{ width: 240, borderRight: 0 }}
           onClick={this.handleClick}
           onOpenChange={this.onOpenChange}
         >
@@ -76,7 +78,7 @@ class Navigator extends React.Component {
 
 Navigator.propTypes = {
   recipe: React.PropTypes.object,
-  recipes: React.PropTypes.array,
+  recipes: React.PropTypes.object,
   categories: React.PropTypes.array,
   onClick: React.PropTypes.func.isRequired,
   onAddRecipe: React.PropTypes.func.isRequired,
