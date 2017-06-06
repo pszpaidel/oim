@@ -4,10 +4,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const srcPath = path.join(__dirname, './lib');
 const entryJS = path.join(__dirname, './lib/index.jsx');
+const entryCSS = path.join(__dirname, './lib/components/index');
 
 module.exports = {
   entry: {
-    app: entryJS,
+    app: [entryJS, entryCSS],
     vendor: [
       "antd",
       "axios",
@@ -30,7 +31,7 @@ module.exports = {
     filename: 'bundle.min.js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.less']
   },
   plugins: [
     new ExtractTextPlugin("bundle.min.css"),
