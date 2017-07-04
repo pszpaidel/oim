@@ -23,7 +23,6 @@ module.exports = {
       "redux",
       "redux-thunk",
       'reselect',
-      'immutable'
     ],
   },
   output: {
@@ -77,7 +76,6 @@ module.exports = {
   postcss: function () {
     return [
       require('autoprefixer')(),
-      require('cssnano')()
     ];
   }
 };
