@@ -124,6 +124,7 @@ class Form extends React.Component {
               onChange={data => this.onChangeComponents(data, i)}
               defaultActiveFirstOption={false}
               value={v}
+              filterOption
             />
             <Gap />
             <div className="display-flex">
