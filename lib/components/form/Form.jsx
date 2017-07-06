@@ -39,10 +39,7 @@ class Form extends React.Component {
   }
 
   onChangeDropDown(value) {
-    this.setState(_.assign(
-      {},
-      this.state,
-      { category: value }));
+    this.setState(_.assign({}, this.state, { category: value }));
   }
 
   onAddcomponents() {

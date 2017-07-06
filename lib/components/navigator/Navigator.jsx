@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { Menu, Button } from 'antd';
 import Gap from '../layout/Gap';
+import { CATEGORY, TITLE } from '../../model/recipe';
 
 const SubMenu = Menu.SubMenu;
 
@@ -40,19 +41,22 @@ class Navigator extends React.Component {
   }
 
   render() {
-    if (!this.props.categories) return null;
+    const { categories, recipes } = this.props;
 
-    const list = this.props.categories.map((value) => {
+    if (!categories) return null;
+
+    const list = categories.map((value) => {
       const items = [];
-      _.forIn(this.props.recipes, (v, key) => {
-        if (v.category === value.id) {
-          items.push(<Menu.Item key={key}>{v.title}</Menu.Item>);
+      _.forIn(recipes, (recipe, key) => {
+        if (_.get(recipe, CATEGORY) === value.id) {
+          items.push(<Menu.Item key={key}>{_.get(recipe, TITLE)}</Menu.Item>);
         }
       });
 
-      return (<SubMenu key={value.id} title={<span>{value.name}</span>}>
-        {items}
-      </SubMenu>);
+      return (
+        <SubMenu key={value.id} title={<span>{value.name}</span>}>
+          {items}
+        </SubMenu>);
     });
 
     return (

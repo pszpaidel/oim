@@ -3,6 +3,7 @@ import clipboard from 'clipboard-js';
 import _ from 'lodash';
 import { Modal, Button, Tooltip } from 'antd';
 import Gap from '../layout/Gap';
+import { COMPONENTS, CONTENT, PHOTOS, TITLE, PORTION } from '../../model/recipe';
 
 class Recipe extends React.Component {
 
@@ -27,21 +28,22 @@ class Recipe extends React.Component {
     this.forceUpdate();
   }
 
-  copyToClipbard() {
-    clipboard.copy(_.get(this.props.recipe, 'components').join(' \n'));
+  copyToClipbard(recipe) {
+    clipboard.copy(_.get(recipe, COMPONENTS).join(' \n'));
   }
 
   render() {
-    if (!this.props.recipe) return null;
+    const { recipe } = this.props;
+    if (!recipe) return null;
 
-    const components = _.get(this.props.recipe, 'components');
+    const components = _.get(recipe, COMPONENTS);
     let componentList = null;
 
     if (components) {
       componentList = components.map(data => <li key={data}>{data}</li>);
     }
 
-    const gallery = _.map(this.props.recipe.photos, data =>
+    const gallery = _.map(_.get(recipe, PHOTOS), data =>
       <div className="display-flex">
         <div onClick={() => this.onClickGallery(data.url)}>
           <img
@@ -59,7 +61,6 @@ class Recipe extends React.Component {
       <div className="recipe">
         <Modal
           title="Galeria"
-          width={800}
           footer={null}
           visible={this.visibleGallery}
           onCancel={() => this.hideGallery()}
@@ -72,8 +73,8 @@ class Recipe extends React.Component {
         </Modal>
 
         <div className="display-flex">
-          <div className="recipe-header-title font-x-large font-bold">{this.props.recipe.title}</div>
-          <div className="recipe-header-portion font-large font-bold">Porcja: {this.props.recipe.portion}</div>
+          <div className="recipe-header-title font-x-large font-bold">{_.get(recipe, TITLE)}</div>
+          <div className="recipe-header-portion font-large font-bold">Porcja: {_.get(recipe, PORTION)}</div>
         </div>
         <Gap />
         <div className="display-flex">
@@ -91,7 +92,7 @@ class Recipe extends React.Component {
               size="large"
               icon="copy"
               shape="circle"
-              onClick={() => this.copyToClipbard(componentList)}
+              onClick={() => this.copyToClipbard(recipe, componentList)}
             />
           </Tooltip>
         </div>
@@ -100,7 +101,7 @@ class Recipe extends React.Component {
         <Gap />
         <div className="recipe-header font-large font-bold">Przygotowanie</div>
         <Gap />
-        <div className="recipe-content">{this.props.recipe.content}</div>
+        <div className="recipe-content">{_.get(recipe, CONTENT) }</div>
       </div>
     );
   }
