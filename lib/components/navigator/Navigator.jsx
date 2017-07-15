@@ -1,7 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { Menu, Button } from 'antd';
-import Gap from '../layout/Gap';
+import { Menu } from 'antd';
 import { CATEGORY, TITLE } from '../../model/recipe';
 
 const SubMenu = Menu.SubMenu;
@@ -62,19 +61,15 @@ class Navigator extends React.Component {
     return (
       <div className="navigator">
         <Menu
-          mode="inline"
           openKeys={this.state.open}
           selectedKeys={[this.state.current]}
-          style={{ width: 240, borderRight: 0 }}
+          style={{ borderRight: 0 }}
           onClick={this.handleClick}
           onOpenChange={this.onOpenChange}
+          mode="horizontal"
         >
           {list}
         </Menu>
-        <div className="navigator-add-button">
-          <Gap />
-          <Button onClick={this.props.onAddRecipe}>Dodaj przepis</Button>
-        </div>
       </div>
     );
   }

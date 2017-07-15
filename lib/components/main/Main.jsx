@@ -1,9 +1,9 @@
 import React from 'react';
 import RecipeContainer from '../recipe/RecipeContainer';
 import FormContainer from '../form/FormContainer';
-import NavigatorContainer from '../navigator/NavigatorContainer';
 import Display from '../layout/Display';
 import Spinner from '../layout/Spinner';
+import HeaderContainer from '../header/HeaderContainer';
 import { RECIPE_VIEW, FORM_VIEW } from '../../const/CookbookConst';
 
 class Main extends React.Component {
@@ -17,7 +17,10 @@ class Main extends React.Component {
 
     return (
       <div className="main">
-        <NavigatorContainer />
+        <Display
+          when={isReady && view !== ''}
+          what={<HeaderContainer />}
+        />
         <Display
           when={isReady && view === RECIPE_VIEW}
           what={<RecipeContainer />}
