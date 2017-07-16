@@ -57,8 +57,8 @@ class Recipe extends React.Component {
     );
 
     return (
-      <div className="recipe-1">
-        <div className="recipe">
+      <div className="recipe">
+        <div className="recipe-content">
           <Modal
             title="Galeria"
             footer={null}

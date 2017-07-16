@@ -4,8 +4,8 @@
 
   font-family: Frutiger, Arial, Helvetica, sans-serif;
   font-size: 14px;
-  height: 100%;
   background-color: #f1f1f1;
+  height: 100%;
 
   .font-bold {
     font-weight: bold;
@@ -33,15 +33,15 @@
   }
 
   .navigator {
-    width: 800px;
+    min-width: 800px;
+    .font-bold;
 
     .ant-menu-submenu-title:hover {
       color: white;
     }
-
     .ant-menu-horizontal {
         border: none;
-      }
+    }
     .ant-menu {
       background-color: #2d2d2d;
       color: white;
@@ -58,19 +58,13 @@
     }
   }
 
-  .navigator-add-button {
-    text-align: center;
-  }
-
-
-  .recipe-1 {
+  .recipe {
     height: auto;
     padding-top: 20px; 
     width: 100%;
-    display: flex;
   }
 
-  .recipe {
+  .recipe-content {
     background-color: white;
     width: 888px;
     margin: auto;
@@ -100,11 +94,17 @@
     text-align: right;
   }
 
-  .form {
-    max-width: 800px;
+ .form {
+    height: auto;
+    padding-top: 20px; 
+    width: 100%;
+  }
+
+  .form-content {
+    max-width: 888px;
     padding: 20px;
-    display: inline-block;
-    vertical-align: top;
+    margin: auto;
+    background-color: white;
   }
 
   .form-fields {
@@ -133,34 +133,34 @@
   }
 
   .quick-view {
-    max-width: 800px;
-    padding: 20px;
-    display: inline-block;
-    vertical-align: top;
+    max-width: 888px;
+    padding-top: 20px;
+    margin: auto;
   }
 
   .quick-view-recipe {
     .font-bold;
-    height: 35px;
-    display: inline-block;
+    width: 888px;
+
+    height: 50px;
+    margin: auto;
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    margin-top: 10px;
+  
+    .title {
+      min-width: 500px;
+    }
   }
 
   .header {
-    height: auto;
-    width: 100%;
     background-color: #2d2d2d;
     display: flex;
     align-items: center;
 
-    .title {
-      .font-bold;
-      .font-x-large;
-      color: white;
-    }
-
     .header-content {
       height: 50px;
-      max-width: 1200px;
       margin: auto;
       align-items: center;
       display: inline-flex;

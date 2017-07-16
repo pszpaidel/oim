@@ -9,8 +9,8 @@ class Header extends React.Component {
     return (
       <div className="header" >
         <div className="header-content">
-          <Avatar size="large" src="logo.jpeg" />
-          <Gap style={{ width: '20px' }} />
+          <Avatar size="large" src="logo.jpg" />
+          <Gap style={{ width: '10px' }} />
           <NavigatorContainer />
           <Tooltip title="Dodaj przepis">
             <Button onClick={this.props.onAddRecipe} shape="circle" icon="plus" />

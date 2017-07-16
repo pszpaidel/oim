@@ -2,9 +2,10 @@ import React from 'react';
 import RecipeContainer from '../recipe/RecipeContainer';
 import FormContainer from '../form/FormContainer';
 import Display from '../layout/Display';
+import QuickViewContainer from '../quick-view/QuickViewContainer';
 import Spinner from '../layout/Spinner';
 import HeaderContainer from '../header/HeaderContainer';
-import { RECIPE_VIEW, FORM_VIEW } from '../../const/CookbookConst';
+import { RECIPE_VIEW, FORM_VIEW, QUICK_VIEW } from '../../const/CookbookConst';
 
 class Main extends React.Component {
 
@@ -20,6 +21,10 @@ class Main extends React.Component {
         <Display
           when={isReady && view !== ''}
           what={<HeaderContainer />}
+        />
+        <Display
+          when={isReady && view === QUICK_VIEW}
+          what={<QuickViewContainer />}
         />
         <Display
           when={isReady && view === RECIPE_VIEW}

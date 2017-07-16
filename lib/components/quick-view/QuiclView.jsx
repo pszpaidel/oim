@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Button, Tag } from 'antd';
 import _ from 'lodash';
 import { TITLE } from '../../model/recipe';
 import Gap from '../../components/layout/Gap';
@@ -11,12 +11,15 @@ class QuickView extends React.Component {
     _.forIn(this.props.recipes, (recipe, key) =>
       items.push(
         <div key={key} className="quick-view-recipe">
+          <Gap style={{ width: '30px' }} />
           <Button
             icon="right-circle"
             onClick={() => this.props.onSelect(key)}
-          >{_.get(recipe, TITLE)}
-          </Button>
-          <Gap style={{ height: '10px', width: '10px', display: 'inline-block' }} />
+          />
+          <Gap style={{ width: '20px' }} />
+          <div className="title">{_.get(recipe, TITLE)}</div>
+          <Gap style={{ width: '100%' }} />
+          <Tag>{_.find(this.props.category, value => value.id === recipe.category).name} </Tag>
         </div>,
         ),
     );
@@ -32,6 +35,7 @@ class QuickView extends React.Component {
 QuickView.propTypes = {
   recipes: React.PropTypes.object,
   onSelect: React.PropTypes.func,
+  category: React.PropTypes.array,
 };
 
 export default QuickView;

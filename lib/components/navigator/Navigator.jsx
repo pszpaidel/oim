@@ -26,17 +26,7 @@ class Navigator extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!nextProps.recipe) {
       this.setState(getEmptyState());
-      return;
     }
-
-    const current = _.findKey(
-      nextProps.recipes,
-      value => value.title === nextProps.recipe.title);
-
-    if (!current) return;
-
-    const open = [nextProps.recipe.category];
-    this.setState({ current, open });
   }
 
   render() {
@@ -80,7 +70,6 @@ Navigator.propTypes = {
   recipes: React.PropTypes.object,
   categories: React.PropTypes.array,
   onClick: React.PropTypes.func.isRequired,
-  onAddRecipe: React.PropTypes.func.isRequired,
 };
 
 export default Navigator;

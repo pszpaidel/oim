@@ -162,66 +162,68 @@ class Form extends React.Component {
 
     return (
       <div className="form">
-        <div className="form-fields">
-          <div className="font-bold">Tytuł</div>
-          <Input
-            id="title"
-            onChange={v => this.onChange(v)}
-          />
-          <Gap />
-          <div className="font-bold">Porcja</div>
-          <Input
-            id="portion"
-            style={style}
-            onChange={v => this.onChange(v)}
-          />
-          <Gap />
-          <div className="font-bold">Kategoria</div>
-          <Select
-            onChange={data => this.onChangeDropDown(data)}
-            placeholder="wybierz kategorie"
-            style={style}
-          >
-            <Option value="0">Śniadanie</Option>
-            <Option value="1">Obiad</Option>
-            <Option value="2">Deser</Option>
-            <Option value="3">Kolacja</Option>
-            <Option value="5">Koktaile</Option>
-            <Option value="4">Inne</Option>
-          </Select>
-          <Gap />
-          <div className="font-bold">Składniki</div>
-          {components}
-          <Button
-            onClick={() => this.onAddcomponents()}
-          >Dodaj składnik
+        <div className="form-content">
+          <div className="form-fields">
+            <div className="font-bold">Tytuł</div>
+            <Input
+              id="title"
+              onChange={v => this.onChange(v)}
+            />
+            <Gap />
+            <div className="font-bold">Porcja</div>
+            <Input
+              id="portion"
+              style={style}
+              onChange={v => this.onChange(v)}
+            />
+            <Gap />
+            <div className="font-bold">Kategoria</div>
+            <Select
+              onChange={data => this.onChangeDropDown(data)}
+              placeholder="wybierz kategorie"
+              style={style}
+            >
+              <Option value="0">Śniadanie</Option>
+              <Option value="1">Obiad</Option>
+              <Option value="2">Deser</Option>
+              <Option value="3">Kolacja</Option>
+              <Option value="5">Koktaile</Option>
+              <Option value="4">Inne</Option>
+            </Select>
+            <Gap />
+            <div className="font-bold">Składniki</div>
+            {components}
+            <Button
+              onClick={() => this.onAddcomponents()}
+            >Dodaj składnik
             <Icon type="plus-circle-o" /></Button>
-          <Gap />
-          <div className="font-bold">Przygotowanie</div>
-          <Input
-            id="content"
-            onChange={data => this.onChange(data)}
-            type="textarea"
-            rows={25}
-          />
-          <Gap />
-          <input
-            ref={(value) => {
-              this.uploadInput = value;
-            }}
-            type="file"
-            name="pic"
-            accept="image/*"
-            onChange={(e) => {
-              this.props.onUpload(e.target.files[0], value => this.onUploadSuccess(value));
-            }}
-          />
-          <Gap />
-          <div className="display-flex">
-            {gallery}
+            <Gap />
+            <div className="font-bold">Przygotowanie</div>
+            <Input
+              id="content"
+              onChange={data => this.onChange(data)}
+              type="textarea"
+              rows={25}
+            />
+            <Gap />
+            <input
+              ref={(value) => {
+                this.uploadInput = value;
+              }}
+              type="file"
+              name="pic"
+              accept="image/*"
+              onChange={(e) => {
+                this.props.onUpload(e.target.files[0], value => this.onUploadSuccess(value));
+              }}
+            />
+            <Gap />
+            <div className="display-flex">
+              {gallery}
+            </div>
+            <Gap />
+            <Button onClick={() => this.props.onSave(this.state)}>Zapisz</Button>
           </div>
-          <Gap />
-          <Button onClick={() => this.props.onSave(this.state)}>Zapisz</Button>
         </div>
       </div>
     );
