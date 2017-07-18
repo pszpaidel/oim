@@ -3,6 +3,7 @@ import clipboard from 'clipboard-js';
 import _ from 'lodash';
 import { Modal, Button, Tooltip } from 'antd';
 import Gap from '../layout/Gap';
+import Image from '../image/Image';
 import { COMPONENTS, CONTENT, PHOTOS, TITLE, PORTION } from '../../model/recipe';
 
 class Recipe extends React.Component {
@@ -44,16 +45,12 @@ class Recipe extends React.Component {
     }
 
     const gallery = _.map(_.get(recipe, PHOTOS), data =>
-      <div className="display-flex">
-        <div onClick={() => this.onClickGallery(data.url)}>
-          <img
-            src={data.url}
-            style={{ cursor: 'pointer', borderRadius: '5px' }}
-            width="180" height="120"
-          />
-        </div>
-        <Gap />
-      </div>,
+      <Image
+        url={data.url}
+        width="180px"
+        height="120px"
+        onClick={() => this.onClickGallery(data.url)}
+      />,
     );
 
     return (
@@ -61,14 +58,15 @@ class Recipe extends React.Component {
         <div className="recipe-content">
           <Modal
             title="Galeria"
+            width="830"
             footer={null}
             visible={this.visibleGallery}
             onCancel={() => this.hideGallery()}
           >
-            <img
-              style={{ borderRadius: '10px' }}
-              src={this.galleryImageUrl}
-              width="100%" height="100%"
+            <Image
+              width="800px"
+              height="600px"
+              url={this.galleryImageUrl}
             />
           </Modal>
 
@@ -77,7 +75,7 @@ class Recipe extends React.Component {
             <div className="recipe-header-portion font-large font-bold">Porcja: {_.get(recipe, PORTION)}</div>
           </div>
           <Gap />
-          <div className="display-flex">
+          <div className="display-flex" style={{ height: '120px' }}>
             {gallery}
           </div>
           <Gap />
