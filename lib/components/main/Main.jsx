@@ -19,7 +19,7 @@ class Main extends React.Component {
     return (
       <div className="main">
         <Display
-          when={isReady && view !== ''}
+          when={isReady}
           what={<HeaderContainer />}
         />
         <Display

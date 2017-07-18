@@ -101,7 +101,7 @@ class Recipe extends React.Component {
           <Gap />
           <div className="recipe-header font-large font-bold">Przygotowanie</div>
           <Gap />
-          <div>{_.get(recipe, CONTENT) }</div>
+          <div>{_.get(recipe, CONTENT)}</div>
         </div>
       </div>
     );
