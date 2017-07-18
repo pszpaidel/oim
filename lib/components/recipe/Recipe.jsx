@@ -44,14 +44,21 @@ class Recipe extends React.Component {
       componentList = components.map(data => <li key={data}>{data}</li>);
     }
 
-    const gallery = _.map(_.get(recipe, PHOTOS), data =>
+
+    const galleryItems = _.map(_.get(recipe, PHOTOS), (data, i) =>
       <Image
+        key={i}
         url={data.url}
         width="180px"
         height="120px"
         onClick={() => this.onClickGallery(data.url)}
       />,
     );
+
+    const gallery = !_.isEmpty(galleryItems) ?
+      (<div className="display-flex" style={{ height: '120px' }}>
+        {galleryItems}
+      </div>) : null;
 
     return (
       <div className="recipe">
@@ -75,9 +82,7 @@ class Recipe extends React.Component {
             <div className="recipe-header-portion font-large font-bold">Porcja: {_.get(recipe, PORTION)}</div>
           </div>
           <Gap />
-          <div className="display-flex" style={{ height: '120px' }}>
-            {gallery}
-          </div>
+          {gallery}
           <Gap />
           <div className="recipe-header font-large font-bold">Składniki</div>
           <Gap />

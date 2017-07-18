@@ -37,7 +37,7 @@ class Image extends React.Component {
       src={this.props.url}
       width={width}
       height={height}
-      style={{ cursor: 'pointer', position: 'absolute', 'border-radius': '3px' }}
+      style={{ cursor: 'pointer', position: 'absolute', borderRadius: '3px' }}
       onLoad={() => this.onLoad()}
       onClick={this.props.onClick}
     />);
