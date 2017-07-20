@@ -44,7 +44,6 @@ class Recipe extends React.Component {
       componentList = components.map(data => <li key={data}>{data}</li>);
     }
 
-
     const galleryItems = _.map(_.get(recipe, PHOTOS), (data, i) =>
       <Image
         key={i}

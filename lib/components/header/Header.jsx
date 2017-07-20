@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tag } from 'antd';
 import Gap from '../layout/Gap';
-import NavigatorContainer from '../navigator/NavigatorContainer';
+import NavigatorContainer from '../../containers/NavigatorContainer';
 
 class Header extends React.Component {
 

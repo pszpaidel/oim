@@ -1,10 +1,10 @@
 import React from 'react';
-import RecipeContainer from '../recipe/RecipeContainer';
-import FormContainer from '../form/FormContainer';
-import Display from '../layout/Display';
-import QuickViewContainer from '../quick-view/QuickViewContainer';
+import RecipeContainer from '../../containers/RecipeContainer';
+import FormContainer from '../../containers/FormContainer';
+import QuickViewContainer from '../../containers/QuickViewContainer';
+import HeaderContainer from '../../containers/HeaderContainer';
 import Spinner from '../layout/Spinner';
-import HeaderContainer from '../header/HeaderContainer';
+import Display from '../layout/Display';
 import { RECIPE_VIEW, FORM_VIEW, QUICK_VIEW } from '../../const/CookbookConst';
 
 class Main extends React.Component {

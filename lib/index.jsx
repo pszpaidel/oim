@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { LocaleProvider } from 'antd';
 import { Provider } from 'react-redux';
 import enUS from 'antd/lib/locale-provider/en_US';
-import MainContainer from './components/main/MainContainer';
+import MainContainer from './containers/MainContainer';
 import store from './store/configStore';
 
 ReactDOM.render(

@@ -28,6 +28,7 @@ class Image extends React.Component {
         height,
         position: 'absolute',
         backgroundColor: 'white',
+        borderRadius: '3px',
       }}
     >
       <Spinner />
@@ -37,7 +38,7 @@ class Image extends React.Component {
       src={this.props.url}
       width={width}
       height={height}
-      style={{ cursor: 'pointer', position: 'absolute', borderRadius: '3px' }}
+      style={{ cursor: 'pointer', position: 'absolute', borderRadius: '3px', boxShadow: '0 0 1px 1px rgba(0,0,0,.4)' }}
       onLoad={() => this.onLoad()}
       onClick={this.props.onClick}
     />);
