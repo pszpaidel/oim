@@ -55,7 +55,7 @@ class Recipe extends React.Component {
     );
 
     const gallery = !_.isEmpty(galleryItems) ?
-      (<div className="display-flex" style={{ height: '120px' }}>
+      (<div className="display-row" style={{ height: '120px' }}>
         {galleryItems}
       </div>) : null;
 
@@ -76,7 +76,7 @@ class Recipe extends React.Component {
             />
           </Modal>
 
-          <div className="display-flex">
+          <div className="display-row">
             <div className="recipe-header-title font-x-large font-bold">{_.get(recipe, TITLE)}</div>
             <div className="recipe-header-portion font-large font-bold">Porcja: {_.get(recipe, PORTION)}</div>
           </div>
@@ -85,7 +85,7 @@ class Recipe extends React.Component {
           <Gap />
           <div className="recipe-header font-large font-bold">Składniki</div>
           <Gap />
-          <div className="display-flex">
+          <div className="display-row">
             <div className="recipe-components">
               <ul>{componentList}</ul>
             </div>

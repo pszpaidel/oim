@@ -1,7 +1,5 @@
 #app {
-
-  @import (css) '../../node_modules/antd/dist/antd.css';
-
+ 
   @content-width: 900px;
   @shadow: 0px 0px 1px 1px RGBA(0,0,0,0.2);
 
@@ -9,6 +7,10 @@
   font-size: 14px;
   background-color: #f1f1f1;
   height: 100%;
+
+  .display-row {
+    display: flex
+  }
 
   .font-bold {
     font-weight: bold;
@@ -22,7 +24,8 @@
     font-size: 14px;
   }
 
-  .font-medium {
+  .font-medium
+  {
     font-size: 12px;
   }
 
@@ -30,146 +33,12 @@
     font-size: 10px;
   }
 
-  .main {
-    height: 100%;
-    width: 100%;
-  }
-
-  .navigator {
-    min-width: 810px;
-
-    .ant-menu-submenu-title:hover {
-      color: white;
-    }
-    .ant-menu-horizontal {
-      border: none;
-    }
-    .ant-menu {
-      background-color: #2d2d2d;
-      color: white;
-    }
-    .ant-menu-item-active {
-      color: white
-    }
-    .ant-menu-submenu-active {
-      color: white;
-    }
-    .ant-menu-item-selected {
-      background-color: #2d2d2d;
-      color: white
-    }
-  }
-
-  .recipe {
-    height: auto;
-    padding-top: 20px; 
-    width: 100%;
-  }
-
-  .recipe-content {
-    background-color: white;
-    width: @content-width;
-    margin: auto;
-    padding: 20px;
-    box-shadow: @shadow;
-    .ul, li {
-    list-style-type: circle !important;
-    }
-  }
-
-  .recipe-header {
-    line-height: 35px;
-    vertical-align: middle;
-    background-color: #f1f1f1;
-    padding-left: 10px;
-    border-radius: 3px;
-  }
-
-  .recipe-header-title {
-    .recipe-header;
-    width: 80%;
-  }
-
-  .recipe-header-portion {
-    .recipe-header;
-    padding-right: 10px;
-    width: 20%;
-    text-align: right;
-  }
-
- .form {
-    height: auto;
-    padding-top: 20px; 
-    width: 100%;
-  }
-
-  .form-content {
-    max-width: @content-width;
-    padding: 20px;
-    margin: auto;
-    background-color: white;
-    box-shadow: @shadow;
-  }
-
-  .form-fields {
-    width: 800px;
-  }
-
-  .display-flex {
-    display: flex
-  }
-
-  .recipe-content {
-    .font-medium;
-    text-align: justify;
-  }
-
-  .recipe-components {
-    .font-medium;
-    width: 95%;
-    padding-left: 20px;
-  }
-
-  .spinner {
-    position: absolute;
-    top: ~"calc(50% - 16px)";
-    left: ~"calc(50% - 16px)";
-  }
-
-  .quick-view {
-    max-width: @content-width;
-    margin: auto;
-  }
-
-  .quick-view-recipe {
-    .font-bold;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 3px;
-    height: 50px;
-    margin: auto;
-    display: inline-flex;
-    align-items: center;
-    background-color: white;
-    margin-top: 10px;
-    box-shadow: @shadow;
-  
-    .title {
-      min-width: 500px;
-    }
-  }
-
-  .header {
-    background-color: #2d2d2d;
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    .header-content {
-      height: 50px;
-      margin: auto;
-      align-items: center;
-      display: inline-flex;
-    }
-  }
+   @import (css) '../../node_modules/antd/dist/antd.css';
+   @import './form/Form';
+   @import './recipe/Recipe';
+   @import './header/Header';
+   @import './quick-view/QuickView';
+   @import './navigator/Navigator';
+   @import './layout/index';
+   @import './main/main';
 }

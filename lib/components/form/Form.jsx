@@ -114,7 +114,7 @@ class Form extends React.Component {
     const components = _.map(this.state.components,
       ((v, i) =>
         <div key={i}>
-          <div className="display-flex">
+          <div className="display-row">
             <AutoComplete
               dataSource={this.props.componentsProvider}
               style={{ width: 200 }}
@@ -124,7 +124,7 @@ class Form extends React.Component {
               filterOption
             />
             <Gap />
-            <div className="display-flex">
+            <div className="display-row">
               <Button
                 icon="close-square-o"
                 onClick={() => this.onRemovecomponents(i)}
@@ -218,7 +218,7 @@ class Form extends React.Component {
               }}
             />
             <Gap />
-            <div className="display-flex">
+            <div className="display-row">
               {gallery}
             </div>
             <Gap />
