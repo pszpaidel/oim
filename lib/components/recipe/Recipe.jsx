@@ -39,7 +39,6 @@ class Recipe extends React.Component {
 
     const components = _.get(recipe, COMPONENTS);
     let componentList = null;
-
     if (components) {
       componentList = components.map(data => <li key={data}>{data}</li>);
     }
@@ -55,13 +54,14 @@ class Recipe extends React.Component {
     );
 
     const gallery = !_.isEmpty(galleryItems) ?
-      (<div className="display-row" style={{ height: '120px' }}>
+      (<div className="gallery">
         {galleryItems}
       </div>) : null;
 
     return (
-      <div className="recipe">
-        <div className="recipe-content">
+      <div className="recipe-content">
+        <Gap />
+        <div className="recipe">
           <Modal
             title="Galeria"
             width="830"
@@ -75,17 +75,22 @@ class Recipe extends React.Component {
               url={this.galleryImageUrl}
             />
           </Modal>
-
-          <div className="display-row">
-            <div className="recipe-header-title font-x-large font-bold">{_.get(recipe, TITLE)}</div>
-            <div className="recipe-header-portion font-large font-bold">Porcja: {_.get(recipe, PORTION)}</div>
+          <div className="recipe-bar">
+            <Gap />
+            <div className="recipe-bar-title">{_.get(recipe, TITLE)}</div>
+            <div className="recipe-bar-portion">Porcja: {_.get(recipe, PORTION)}</div>
+            <Gap />
           </div>
           <Gap />
           {gallery}
           <Gap />
-          <div className="recipe-header font-large font-bold">Składniki</div>
+          <div className="recipe-bar">
+            <Gap />Składniki
+          </div>
           <Gap />
           <div className="display-row">
+            <Gap />
+            <Gap />
             <div className="recipe-components">
               <ul>{componentList}</ul>
             </div>
@@ -99,9 +104,9 @@ class Recipe extends React.Component {
             </Tooltip>
           </div>
           <Gap />
-
-          <Gap />
-          <div className="recipe-header font-large font-bold">Przygotowanie</div>
+          <div className="recipe-bar">
+            <Gap />Przygotowanie
+          </div>
           <Gap />
           <div>{_.get(recipe, CONTENT)}</div>
         </div>
