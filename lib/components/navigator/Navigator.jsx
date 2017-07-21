@@ -5,29 +5,7 @@ import { CATEGORY, TITLE } from '../../model/recipe';
 
 const SubMenu = Menu.SubMenu;
 
-const getEmptyState = () => ({ current: '', open: [] });
-
 class Navigator extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = getEmptyState();
-
-    this.onOpenChange = (open) => {
-      this.setState({ open });
-    };
-
-    this.handleClick = (e) => {
-      this.setState({ current: e.key });
-      this.props.onClick(e.key);
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.recipe) {
-      this.setState(getEmptyState());
-    }
-  }
 
   render() {
     const { categories, recipes } = this.props;
@@ -51,11 +29,8 @@ class Navigator extends React.Component {
     return (
       <div className="navigator">
         <Menu
-          openKeys={this.state.open}
-          selectedKeys={[this.state.current]}
           style={{ borderRight: 0 }}
-          onClick={this.handleClick}
-          onOpenChange={this.onOpenChange}
+          onClick={e => this.props.onClick(e.key)}
           mode="horizontal"
         >
           {list}
