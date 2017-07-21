@@ -9,7 +9,7 @@ class Header extends React.Component {
     return (
       <div className="header" >
         <div className="header-content">
-          <Gap style={{ width: '10px', height: '100%' }} />
+          <Gap />
           <NavigatorContainer />
           <Tag onClick={this.props.onAddRecipe}>Dodaj przepis</Tag>
         </div>
