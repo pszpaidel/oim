@@ -7,6 +7,9 @@ import Recipe from '../../model/recipe';
 
 const Option = Select.Option;
 const style = { width: 200 };
+const focus = function onFocus() {
+  this.focus();
+};
 
 class Form extends React.Component {
 
@@ -18,9 +21,7 @@ class Form extends React.Component {
 
   componentDidUpdate() {
     if (this.isComponentsUpdate) {
-      d3.selectAll('.ant-select-search__field').each(function () {
-        this.focus();
-      });
+      d3.selectAll('.ant-select-search__field').each(focus);
     }
 
     this.isComponentsUpdate = false;
@@ -233,7 +234,7 @@ Form.propTypes = {
   onSave: React.PropTypes.func.isRequired,
   onUpload: React.PropTypes.func.isRequired,
   onDeleteUploadedImage: React.PropTypes.func.isRequired,
-  componentsProvider: React.PropTypes.array,
+  componentsProvider: React.PropTypes.array.isRequired,
 };
 
 export default Form;

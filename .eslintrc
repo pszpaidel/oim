@@ -5,14 +5,8 @@
   ],
   "rules": {
     "react/forbid-prop-types": 0,
-    "react/prefer-stateless-function": 1,
-    "jsx-a11y/no-static-element-interactions": 0,
-    "class-methods-use-this": 0,
-    "react/require-default-props": 0,
-    "react/no-unused-prop-types": 0,
     "jsx-a11y/img-has-alt": 0,
-    "func-names": 0
-
+    "jsx-a11y/no-static-element-interactions": 0,
   },
   "globals": {
     "document": 1

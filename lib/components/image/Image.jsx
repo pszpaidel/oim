@@ -53,10 +53,10 @@ class Image extends React.Component {
 }
 
 Image.propTypes = {
-  url: React.PropTypes.string,
-  width: React.PropTypes.string,
-  height: React.PropTypes.string,
-  onClick: React.PropTypes.func,
+  url: React.PropTypes.string.isRequired,
+  width: React.PropTypes.string.isRequired,
+  height: React.PropTypes.string.isRequired,
+  onClick: React.PropTypes.func.isRequired,
 };
 
 export default Image;

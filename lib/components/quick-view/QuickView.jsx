@@ -4,38 +4,35 @@ import _ from 'lodash';
 import { TITLE, CATEGORY } from '../../model/recipe';
 import Gap from '../../components/layout/Gap';
 
-class QuickView extends React.Component {
-
-  render() {
-    const items = [];
-    _.forIn(this.props.recipes, (recipe, key) =>
+const getItems = (props) => {
+  const items = [];
+  _.forIn(props.recipes, (recipe, key) =>
       items.push(
         <div
           key={key}
           className="quick-view"
-          onClick={() => this.props.onSelect(key)}
+          onClick={() => props.onSelect(key)}
         >
           <Gap style={{ width: '30px' }} />
           <div className="quick-view-recipe-title">{_.get(recipe, TITLE)}</div>
           <Gap style={{ width: '100%' }} />
-          <Tag>{_.find(this.props.category,
+          <Tag>{_.find(props.category,
             value => value.id === _.get(recipe, CATEGORY)).name} </Tag>
         </div>,
         ),
     );
+  return items;
+};
 
-    return (
-      <div className="quick-view-content">
-        {items}
-      </div>
-    );
-  }
-}
+const QuickView = props =>
+  <div className="quick-view-content">
+    {getItems(props)}
+  </div>;
 
 QuickView.propTypes = {
-  recipes: React.PropTypes.object,
-  onSelect: React.PropTypes.func,
-  category: React.PropTypes.array,
+  recipes: React.PropTypes.object.isRequired,
+  onSelect: React.PropTypes.func.isRequired,
+  category: React.PropTypes.array.isRequired,
 };
 
 export default QuickView;

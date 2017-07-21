@@ -45,8 +45,12 @@ class Main extends React.Component {
 
 Main.propTypes = {
   fetchCookbook: React.PropTypes.func.isRequired,
+  view: React.PropTypes.string.isRequired,
   isReady: React.PropTypes.bool,
-  view: React.PropTypes.string,
+};
+
+Main.defaultProps = {
+  isReady: false,
 };
 
 export default Main;

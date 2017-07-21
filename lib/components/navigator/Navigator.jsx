@@ -41,9 +41,8 @@ class Navigator extends React.Component {
 }
 
 Navigator.propTypes = {
-  recipe: React.PropTypes.object,
-  recipes: React.PropTypes.object,
-  categories: React.PropTypes.array,
+  recipes: React.PropTypes.object.isRequired,
+  categories: React.PropTypes.array.isRequired,
   onClick: React.PropTypes.func.isRequired,
 };
 

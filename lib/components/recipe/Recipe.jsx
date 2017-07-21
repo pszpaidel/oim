@@ -29,10 +29,6 @@ class Recipe extends React.Component {
     this.forceUpdate();
   }
 
-  copyToClipbard(recipe) {
-    clipboard.copy(_.get(recipe, COMPONENTS).join(' \n'));
-  }
-
   render() {
     const { recipe } = this.props;
     if (!recipe) return null;
@@ -99,7 +95,7 @@ class Recipe extends React.Component {
                 size="large"
                 icon="copy"
                 shape="circle"
-                onClick={() => this.copyToClipbard(recipe, componentList)}
+                onClick={() => clipboard.copy(_.get(recipe, COMPONENTS).join(' \n'))}
               />
             </Tooltip>
           </div>
@@ -116,7 +112,7 @@ class Recipe extends React.Component {
 }
 
 Recipe.propTypes = {
-  recipe: React.PropTypes.object,
+  recipe: React.PropTypes.object.isRequired,
 };
 
 export default Recipe;

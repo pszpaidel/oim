@@ -8,8 +8,8 @@ class Display extends React.Component {
 }
 
 Display.propTypes = {
-  when: React.PropTypes.bool,
-  what: React.PropTypes.element,
+  when: React.PropTypes.bool.isRequired,
+  what: React.PropTypes.element.isRequired,
 };
 
 export default Display;
