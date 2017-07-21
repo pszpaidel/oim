@@ -12,11 +12,11 @@ class QuickView extends React.Component {
       items.push(
         <div
           key={key}
-          className="quick-view-recipe"
+          className="quick-view"
           onClick={() => this.props.onSelect(key)}
         >
           <Gap style={{ width: '30px' }} />
-          <div className="title">{_.get(recipe, TITLE)}</div>
+          <div className="quick-view-recipe-title">{_.get(recipe, TITLE)}</div>
           <Gap style={{ width: '100%' }} />
           <Tag>{_.find(this.props.category,
             value => value.id === _.get(recipe, CATEGORY)).name} </Tag>
@@ -25,8 +25,7 @@ class QuickView extends React.Component {
     );
 
     return (
-      <div className="quick-view">
-        <Gap style={{ height: '20px', width: '100%' }} />
+      <div className="quick-view-content">
         {items}
       </div>
     );

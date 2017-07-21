@@ -1,17 +1,13 @@
   .recipe-content {
-    height: auto;
-    width: 100%;
+    max-width: @content-width;
+    margin: auto;
   }
 
   .recipe {
     background-color: white;
-    width: @content-width;
-    margin: auto;
+    width: 100%;
     padding: 20px;
     box-shadow: @shadow;
-    .ul, li {
-    list-style-type: circle !important;
-    }
   }
 
  .recipe-bar {
@@ -20,9 +16,9 @@
     .display-row;
     background-color: #f1f1f1;
     border-radius: 3px;
-    line-height: 35px;
+    height: 35px;
     width: 100%;
-    vertical-align: middle;
+    align-items: center
   }
 
   .recipe-bar-title {
@@ -30,13 +26,16 @@
   }
 
   .recipe-bar-portion {
-    width: 250px;
+    min-width: 250px;
     text-align: right;
   }
 
   .recipe-components {
     .font-medium;
     width: 100%;
+    .ul, li {
+      list-style-type: circle !important;
+    }
   }
 
   .recipe-content {
