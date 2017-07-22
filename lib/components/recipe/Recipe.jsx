@@ -43,7 +43,7 @@ class Recipe extends React.Component {
       <Image
         key={i}
         url={data.url}
-        width="180px"
+        width="160px"
         height="120px"
         onClick={() => this.onClickGallery(data.url)}
       />,
