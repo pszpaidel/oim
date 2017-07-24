@@ -188,8 +188,8 @@ class Form extends React.Component {
             <Option value="1">Obiad</Option>
             <Option value="2">Deser</Option>
             <Option value="3">Kolacja</Option>
-            <Option value="5">Koktaile</Option>
-            <Option value="4">Inne</Option>
+            <Option value="4">Koktaile</Option>
+            <Option value="5">Inne</Option>
           </Select>
           <Gap />
           <div className="font-bold">Składniki</div>

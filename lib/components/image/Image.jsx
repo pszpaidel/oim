@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import Spinner from '../layout/Spinner';
 import Display from '../layout/Display';
 
@@ -53,10 +54,15 @@ class Image extends React.Component {
 }
 
 Image.propTypes = {
-  url: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string,
   width: React.PropTypes.string.isRequired,
   height: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
+  onClick: React.PropTypes.func,
+};
+
+Image.defaultProps = {
+  onClick: _.noop,
+  url: '',
 };
 
 export default Image;

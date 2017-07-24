@@ -60,7 +60,7 @@ class Recipe extends React.Component {
         <div className="recipe">
           <Modal
             title="Galeria"
-            width="830"
+            width="830px"
             footer={null}
             visible={this.visibleGallery}
             onCancel={() => this.hideGallery()}
@@ -72,6 +72,7 @@ class Recipe extends React.Component {
             />
           </Modal>
           <div className="recipe-bar">
+            <Gap />
             <Gap />
             <div className="recipe-bar-title">{_.get(recipe, TITLE)}</div>
             <div className="recipe-bar-portion">Porcja: {_.get(recipe, PORTION)}</div>
