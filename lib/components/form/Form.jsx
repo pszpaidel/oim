@@ -162,9 +162,9 @@ class Form extends React.Component {
     );
 
     return (
-      <div className="form">
+      <div className="form-content">
         <Gap />
-        <div className="form-content">
+        <div className="form">
           <div className="font-bold">Tytuł</div>
           <Input
             id="title"

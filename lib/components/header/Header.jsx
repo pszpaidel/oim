@@ -4,8 +4,8 @@ import Gap from '../layout/Gap';
 import NavigatorContainer from '../../containers/NavigatorContainer';
 
 const Header = props =>
-  <div className="header" >
-    <div className="header-content">
+  <div className="header-content" >
+    <div className="header">
       <Gap />
       <NavigatorContainer />
       <Tag onClick={props.onAddRecipe}>Dodaj przepis</Tag>
