@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CircularDependencies = require('circular-dependency-plugin');
+const Visualizer = require('webpack-visualizer-plugin');
 
 const srcPath = path.join(__dirname, './lib');
 const entryJS = path.join(__dirname, './lib/index');
@@ -17,7 +18,6 @@ module.exports = {
       "d3",
       "firebase",
       "lodash",
-      "moment",
       "react",
       "react-dom",
       "react-redux",
@@ -39,7 +39,8 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js")
+    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),
+    new Visualizer()
   ],
   module: {
     loaders: [

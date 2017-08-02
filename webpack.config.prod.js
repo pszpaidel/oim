@@ -16,7 +16,6 @@ module.exports = {
       "d3",
       "firebase",
       "lodash",
-      "moment",
       "react",
       "react-dom",
       "react-redux",

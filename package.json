@@ -38,7 +38,8 @@
     "rimraf": "^2.5.4",
     "sinon": "^1.17.7",
     "webpack": "^1.13.3",
-    "webpack-livereload-plugin": "^0.9.0"
+    "webpack-livereload-plugin": "^0.9.0",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "dependencies": {
     "antd": "^2.10.4",
