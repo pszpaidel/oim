@@ -1,44 +1,35 @@
 #app {
- 
-  @font-size: 14px;
-  @content-width: 900px;
-  @shadow: 0px 0px 1px 1px RGBA(0,0,0,0.2);
-
-  font-family: Frutiger, Arial, Helvetica, sans-serif;
-  font-size: @font-size;
-  background-color: #f1f1f1;
-  height: 100%;
-
-  .display-row {
-    display: flex
-  }
-
-  .font-bold {
-    font-weight: bold;
-  }
-
-  .font-x-large {
-    font-size: @font-size + 2;
-  }
-
-  .font-large {
+    @font-size: 14px;
+    @content-width: 900px;
+    @shadow: 0px 0px 1px 1px RGBA(0, 0, 0, 0.2);
+    font-family: Frutiger, Arial, Helvetica, sans-serif;
     font-size: @font-size;
-  }
-
-  .font-medium{
-    font-size: @font-size - 2;
-  }
-
-  .font-small {
-    font-size: @font-size - 4;
-  }
-
-   @import (css) '../../node_modules/antd/dist/antd.css';
-   @import './form/Form';
-   @import './recipe/Recipe';
-   @import './header/Header';
-   @import './quick-view/QuickView';
-   @import './navigator/Navigator';
-   @import './layout/index';
-   @import './main/main';
+    background-color: #f1f1f1;
+    height: 100%;
+    .display-row {
+        display: flex
+    }
+    .font-bold {
+        font-weight: bold;
+    }
+    .font-x-large {
+        font-size: @font-size + 2;
+    }
+    .font-large {
+        font-size: @font-size;
+    }
+    .font-medium {
+        font-size: @font-size - 2;
+    }
+    .font-small {
+        font-size: @font-size - 4;
+    }
+    @import (css) '../../node_modules/antd/dist/antd.css';
+    @import './form/Form';
+    @import './recipe/Recipe';
+    @import './header/Header';
+    @import './quick-view/QuickView';
+    @import './navigator/Navigator';
+    @import './layout/index';
+    @import './main/main';
 }
