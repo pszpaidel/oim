@@ -105,7 +105,7 @@ class Recipe extends React.Component {
             <Gap />Przygotowanie
           </div>
           <Gap />
-          <div>{_.get(recipe, CONTENT)}</div>
+          <div className="recipe-text">{_.get(recipe, CONTENT)}</div>
         </div>
       </div>
     );
