@@ -9,7 +9,7 @@
     "lint-fix": "eslint ./lib/index.jsx --fix",
     "test": "mocha",
     "test-watch": "mocha -w",
-    "clean-dev": "rimraf ./dist/dev/bundle.* && rimraf ./dist/dev/vendor.*",
+    "clean-dev": "rimraf ./dist/dev/bundle.* && rimraf ./dist/dev/vendor.* && rimraf ./dist/dev/stats.html",
     "clean-build": "rimraf ./dist/prod/public/bundle.* && rimraf ./dist/prod/public/vendor.* ",
     "clean-nm": "rimraf ./node_modules",
     "deploy": "npm run build && firebase deploy"
