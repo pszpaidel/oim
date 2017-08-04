@@ -213,7 +213,7 @@ class Form extends React.Component {
             }}
             type="file"
             name="pic"
-            accept="image/*"
+            accept=".jpg"
             onChange={(e) => {
               this.props.onUpload(e.target.files[0], value => this.onUploadSuccess(value));
             }}

@@ -8,7 +8,7 @@ import store from './store/configStore';
 
 ReactDOM.render(
   <LocaleProvider locale={enUS}>
-    <Provider store={store()}>
+    <Provider store={store}>
       <MainContainer />
     </Provider>
   </LocaleProvider>, document.getElementById('app'));
