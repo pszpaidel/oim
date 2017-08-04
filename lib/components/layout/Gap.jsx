@@ -1,14 +1,16 @@
 import React from 'react';
 
-const style = { height: '10px', width: '10px' };
-const gap = props => <div style={props.style} />;
+const gap = ({ height, width }) =>
+  <div style={{ height, width }} />;
 
 gap.propTypes = {
-  style: React.PropTypes.object,
+  width: React.PropTypes.string,
+  height: React.PropTypes.string,
 };
 
 gap.defaultProps = {
-  style,
+  width: '10px',
+  height: '10px',
 };
 
 export default gap;

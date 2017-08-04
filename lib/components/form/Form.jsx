@@ -137,7 +137,7 @@ class Form extends React.Component {
                 disabled={i === 0}
                 onClick={() => this.onMoveComponent(i, -1)}
               />
-              <Gap style={{ height: '10px', width: '5px' }} />
+              <Gap height="10px" width="5px" />
               <Button
                 disabled={i === this.state.components.length - 1}
                 icon="down-square-o"

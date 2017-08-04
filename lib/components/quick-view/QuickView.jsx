@@ -3,22 +3,23 @@ import { Tag } from 'antd';
 import _ from 'lodash';
 import { TITLE, CATEGORY } from '../../model/recipe';
 import Gap from '../../components/layout/Gap';
+import HGroup from '../../components/layout/HGroup';
 
 const getItems = (props) => {
   const items = [];
   _.forIn(props.recipes, (recipe, key) =>
       items.push(
-        <div
+        <HGroup
           key={key}
           className="quick-view"
           onClick={() => props.onSelect(key)}
         >
-          <Gap style={{ width: '30px' }} />
+          <Gap width="30px" />
           <div className="quick-view-recipe-title">{_.get(recipe, TITLE)}</div>
-          <Gap style={{ width: '100%' }} />
+          <Gap width="100%" />
           <Tag>{_.find(props.category,
             value => value.id === _.get(recipe, CATEGORY)).name} </Tag>
-        </div>,
+        </HGroup>,
         ),
     );
   return items;
@@ -31,8 +32,8 @@ const QuickView = props =>
 
 QuickView.propTypes = {
   recipes: React.PropTypes.object.isRequired,
-  onSelect: React.PropTypes.func.isRequired,
   category: React.PropTypes.array.isRequired,
+  onSelect: React.PropTypes.func.isRequired,
 };
 
 export default QuickView;
