@@ -12,7 +12,8 @@
     "clean-dev": "rimraf ./dist/dev/bundle.* && rimraf ./dist/dev/vendor.* && rimraf ./dist/dev/stats.html",
     "clean-build": "rimraf ./dist/prod/public/bundle.* && rimraf ./dist/prod/public/vendor.* ",
     "clean-nm": "rimraf ./node_modules",
-    "deploy": "npm run build && firebase deploy"
+    "build-deploy": "npm run build && firebase deploy",
+    "deploy": "firebase deploy"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

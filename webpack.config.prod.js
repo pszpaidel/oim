@@ -21,7 +21,7 @@ module.exports = {
       "react-redux",
       "redux",
       "redux-thunk",
-      'reselect',
+      "reselect",
     ],
   },
   output: {
