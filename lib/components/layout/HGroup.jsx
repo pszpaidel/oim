@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import classNames from 'classnames';
 import _ from 'lodash';
 
@@ -20,9 +21,9 @@ class HGroup extends React.Component {
 }
 
 HGroup.propTypes = {
-  children: React.PropTypes.any.isRequired,
-  className: React.PropTypes.string,
-  onClick: React.PropTypes.func,
+  children: T.any.isRequired,
+  className: T.string,
+  onClick: T.func,
 };
 
 HGroup.defaultProps = {

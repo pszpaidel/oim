@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import _ from 'lodash';
 import { Menu } from 'antd';
 import { CATEGORY, TITLE } from '../../model/recipe';
@@ -41,9 +42,9 @@ class Navigator extends React.Component {
 }
 
 Navigator.propTypes = {
-  recipes: React.PropTypes.object.isRequired,
-  categories: React.PropTypes.array.isRequired,
-  onClick: React.PropTypes.func.isRequired,
+  recipes: T.object.isRequired,
+  categories: T.array.isRequired,
+  onClick: T.func.isRequired,
 };
 
 export default Navigator;

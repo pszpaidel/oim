@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import RecipeContainer from '../../containers/RecipeContainer';
 import FormContainer from '../../containers/FormContainer';
 import QuickViewContainer from '../../containers/QuickViewContainer';
@@ -44,9 +45,9 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-  fetchCookbook: React.PropTypes.func.isRequired,
-  view: React.PropTypes.string.isRequired,
-  isReady: React.PropTypes.bool,
+  fetchCookbook: T.func.isRequired,
+  view: T.string.isRequired,
+  isReady: T.bool,
 };
 
 Main.defaultProps = {

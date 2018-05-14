@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import clipboard from 'clipboard-js';
 import _ from 'lodash';
 import { Modal, Button, Tooltip } from 'antd';
@@ -113,7 +114,7 @@ class Recipe extends React.Component {
 }
 
 Recipe.propTypes = {
-  recipe: React.PropTypes.object.isRequired,
+  recipe: T.object.isRequired,
 };
 
 export default Recipe;

@@ -1,11 +1,13 @@
 import React from 'react';
+import T from 'prop-types';
+import { Table } from 'antd';
 
 const gap = ({ height, width }) =>
   <div style={{ height, width }} />;
 
 gap.propTypes = {
-  width: React.PropTypes.string,
-  height: React.PropTypes.string,
+  width: T.string,
+  height: T.string,
 };
 
 gap.defaultProps = {

@@ -6,75 +6,47 @@ const srcPath = path.join(__dirname, './lib');
 const entryJS = path.join(__dirname, './lib/index.jsx');
 const entryCSS = path.join(__dirname, './lib/components/index');
 
+const paths = {
+  DIST: path.resolve(__dirname, 'dist'),
+  JS: path.resolve(__dirname, 'lib'),
+};
+
 module.exports = {
   entry: {
     app: [entryJS, entryCSS],
-    vendor: [
-      "antd",
-      "axios",
-      "clipboard-js",
-      "d3",
-      "firebase",
-      "lodash",
-      "react",
-      "react-dom",
-      "react-redux",
-      "redux",
-      "redux-thunk",
-      "reselect",
-    ],
   },
   output: {
-    path: 'dist/prod/public',
+    path: paths.DIST + '/prod/public',
     filename: 'bundle.min.js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.less']
+    extensions: ['.js', '.jsx', '.less']
   },
-  plugins: [
-    new ExtractTextPlugin("bundle.min.css"),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      comments: false,
-      compress: {
-        warnings: false
-      },
-      'screw-ie8': true
-    }),
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.min.js")
-  ],
   module: {
-    loaders: [
+    rules: [
       {
-        loader: 'babel',
         test: /\.(js|jsx)$/,
         include: [srcPath],
-        query: {
-          presets: ['react', 'es2015']
-        }
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['react', 'es2015']
+          }
+        },
       },
       {
-        loader: 'eslint',
-        test: /\.(js|jsx)$/,
-        include: [srcPath],
-      },
-      {
-        loader: ExtractTextPlugin.extract(["css", "postcss", "less"]),
         test: /\.less$/,
         include: [srcPath],
-      },
-    ]
+        use: ExtractTextPlugin.extract(
+          {
+            use: ['css-loader', 'less-loader']
+          })
+      }
+    ],
   },
-  postcss: function () {
-    return [
-      require('autoprefixer')(),
-    ];
-  }
+  plugins: [
+    new ExtractTextPlugin(
+      { filename: 'bundle.css' }
+    ),
+  ]
 };

@@ -5,3 +5,4 @@ dist/dev/stats.html
 dist/dev/vendor.*
 dist/prod/public/bundle.*
 dist/prod/public/vendor.*
+firebase-debug.log

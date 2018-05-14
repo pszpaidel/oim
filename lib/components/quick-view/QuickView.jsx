@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import { Tag } from 'antd';
 import _ from 'lodash';
 import { TITLE, CATEGORY } from '../../model/recipe';
@@ -27,13 +28,14 @@ const getItems = (props) => {
 
 const QuickView = props =>
   <div className="quick-view-content">
+    <Gap height="12px"/>
     {getItems(props)}
   </div>;
 
 QuickView.propTypes = {
-  recipes: React.PropTypes.object.isRequired,
-  category: React.PropTypes.array.isRequired,
-  onSelect: React.PropTypes.func.isRequired,
+  recipes: T.object.isRequired,
+  category: T.array.isRequired,
+  onSelect: T.func.isRequired,
 };
 
 export default QuickView;

@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import _ from 'lodash';
 import * as d3 from 'd3';
 import { Input, Button, Select, Icon, Card, AutoComplete } from 'antd';
@@ -231,10 +232,10 @@ class Form extends React.Component {
 }
 
 Form.propTypes = {
-  onSave: React.PropTypes.func.isRequired,
-  onUpload: React.PropTypes.func.isRequired,
-  onDeleteUploadedImage: React.PropTypes.func.isRequired,
-  componentsProvider: React.PropTypes.array.isRequired,
+  onSave: T.func.isRequired,
+  onUpload: T.func.isRequired,
+  onDeleteUploadedImage: T.func.isRequired,
+  componentsProvider: T.array.isRequired,
 };
 
 export default Form;

@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 import _ from 'lodash';
 import Spinner from '../layout/Spinner';
 import Display from '../layout/Display';
@@ -39,7 +40,7 @@ class Image extends React.Component {
       src={this.props.url}
       width={width}
       height={height}
-      style={{ cursor: 'pointer', position: 'absolute', borderRadius: '3px', boxShadow: '0 0 1px 1px rgba(0,0,0,.2)' }}
+      style={{'zindex': 0, cursor: 'pointer', position: 'absolute', borderRadius: '3px', boxShadow: '0 0 1px 1px rgba(0,0,0,.2)' }}
       onLoad={() => this.onLoad()}
       onClick={this.props.onClick}
     />);
@@ -54,10 +55,10 @@ class Image extends React.Component {
 }
 
 Image.propTypes = {
-  url: React.PropTypes.string,
-  width: React.PropTypes.string.isRequired,
-  height: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func,
+  url: T.string,
+  width: T.string.isRequired,
+  height: T.string.isRequired,
+  onClick: T.func,
 };
 
 Image.defaultProps = {

@@ -1,4 +1,5 @@
 import React from 'react';
+import T from 'prop-types';
 
 class Display extends React.Component {
 
@@ -8,8 +9,8 @@ class Display extends React.Component {
 }
 
 Display.propTypes = {
-  when: React.PropTypes.bool.isRequired,
-  what: React.PropTypes.element.isRequired,
+  when: T.bool.isRequired,
+  what: T.element.isRequired,
 };
 
 export default Display;
